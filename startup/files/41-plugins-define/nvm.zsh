@@ -1,0 +1,1 @@
+export NVM_DIR=$SHELL_PLUGINS_DIR/nvm

@@ -1,4 +1,5 @@
-export ZSHRC_DIR="$HOME/.shell"
+export SHELL_DIR="$HOME/.shell"
 
-source $ZSHRC_DIR/alias.zsh
-source $ZSHRC_DIR/alt-zap.zsh
+#? bin - runs compiled version (compile if not exists)
+#? dev - runs source files directly, bypassing compile step
+source $SHELL_DIR/startup/run.zsh bin 

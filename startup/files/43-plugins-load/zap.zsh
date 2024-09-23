@@ -1,0 +1,1 @@
+source $ZAP_DIR/zap.zsh

@@ -1,0 +1,3 @@
+- move 'configure' to 'startup'
+- create 'scripts' with built-time alias
+- create
