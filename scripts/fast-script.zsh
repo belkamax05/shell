@@ -1,0 +1,1 @@
+echo-success "This is fast ${COLOR_COMMAND}SCRIPT${STYLE_RESET} with args: $@"
