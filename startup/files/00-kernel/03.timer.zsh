@@ -1,0 +1,1 @@
+local STARTUP_START_TIME=$(date +%s.%N)

@@ -1,3 +1,3 @@
 function shell-restart() {
-    clear && zsh
+    clear && exec zsh
 }
