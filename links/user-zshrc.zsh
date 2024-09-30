@@ -1,0 +1,1 @@
+/home/belkamax05/.zshrc

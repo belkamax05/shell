@@ -1,0 +1,1 @@
+/home/belkamax05/.shell/startup/files/00-kernel/01.configure.zsh

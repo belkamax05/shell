@@ -1,9 +1,11 @@
 export SHELL_STARTUP_DIR="$SHELL_DIR/startup"
 
-if [ "$1" = "dev" ]; then
-  source "$SHELL_STARTUP_DIR/run-in-dev-mode.zsh"
-elif [ "$1" = "bin" ]; then
-  source "$SHELL_STARTUP_DIR/run-via-compilation.zsh"
+if [ -f "$SHELL_DIR/cache/startup.zsh" ]; then
+  STARTUP_RUNS_FROM_SOURCE=0
+  source "$SHELL_DIR/cache/startup.zsh"
 else
-    echo "Invalid argument: '$1'. Available options: dev, bin"
+  STARTUP_RUNS_FROM_SOURCE=1
+  for file in $(find "$SHELL_STARTUP_DIR/files" -type f | sort); do
+      source "$file"
+  done
 fi

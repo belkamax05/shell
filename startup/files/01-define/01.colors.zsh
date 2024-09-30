@@ -1,0 +1,35 @@
+#? base colors
+
+export COLOR_CYAN="\033[38;5;51m"             #00FFFF
+export COLOR_DARK_RED="\033[38;5;196m"        #FF3131
+export COLOR_YELLOW="\033[38;5;226m"          #FFFF00
+export COLOR_HOTPINK="\033[38;5;199m"         #FF00AF
+export COLOR_GREEN="\033[38;5;46m"            #00FF00
+export COLOR_MAGENTA="\033[38;2;201;101;201m" #C965C9
+export COLOR_WHITE="\033[38;5;231m"           #FFFFFF
+export COLOR_DARK_BLUE="\033[38;5;21m"        #0000FF
+export COLOR_DARK_GREEN="\033[38;5;22m"       #00FF00
+export COLOR_DARK_YELLOW="\033[38;5;58m"      #FFFF00
+export COLOR_DARK_CYAN="\033[38;5;37m"        #00FFFF
+export COLOR_DARK_MAGENTA="\033[38;5;90m"     #FF00FF
+export COLOR_DARK_WHITE="\033[38;5;255m"      #FFFFFF
+export COLOR_DARK_GRAY="\033[38;5;240m"       #808080
+export COLOR_DARK_ORANGE="\033[38;5;208m"     #FFA500
+export COLOR_DARK_PINK="\033[38;5;198m"       #FF69B4
+export COLOR_DARK_PURPLE="\033[38;5;57m"      #800080
+export COLOR_DARK_TURQUOISE="\033[38;5;44m"   #40E0D0
+
+#? semantic colors
+
+export COLOR_COMMAND="$COLOR_CYAN"
+export COLOR_INFO="$COLOR_CYAN"
+export COLOR_ARGUMENT="$COLOR_YELLOW"
+export COLOR_PARAMS="$COLOR_DARK_PINK"
+export COLOR_SUCCESS="$COLOR_GREEN"
+export COLOR_ERROR="$COLOR_DARK_RED"
+export COLOR_DEBUG="$COLOR_MAGENTA"
+
+#? styles
+
+export STYLE_RESET="\033[0m"
+export STYLE_BOLD="\033[1m"

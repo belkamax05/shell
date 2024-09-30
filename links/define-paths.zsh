@@ -1,0 +1,1 @@
+/home/belkamax05/.shell/startup/files/01-define/02.paths.zsh
