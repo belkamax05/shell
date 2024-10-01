@@ -22,7 +22,7 @@ function listen_hotkey() {
     read -r input_hotkey
 }
 bindkey -s '^h^k' 'listen_hotkey^M'
-bindkey -s '^N' 'echo Hello^M'
+# bindkey -s '^N' 'echo Hello^M'
 
 # bindkey -s '^y^b^p' 'yarn build --prod^M'
 # bindkey -s '^y^b^d' 'yarn build --dev^M'
