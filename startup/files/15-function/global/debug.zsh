@@ -37,3 +37,13 @@ function debug-error() {
         echo-error "DEBUG: $@"
     fi
 }
+function debug-info() {
+    if [ "$DEBUG_ENABLED" = 1 ]; then
+        echo-info "DEBUG: $@"
+    fi
+}
+function debug-success() {
+    if [ "$DEBUG_ENABLED" = 1 ]; then
+        echo-success "DEBUG: $@"
+    fi
+}

@@ -3,15 +3,23 @@ function shell() {
     if [ -n "$(declare -f shell-$command)" ]; then
         shift
         shell-$command $@
-        return 0
+        if [ $? -ne 0 ]; then
+            echo-error "shell: '$command' failed."
+            # exit $CODE_ERROR
+        fi
+        return $?
     fi
 
     if [ -n "$(declare -f $command)" ]; then
         shift
         $command $@
-        return 0
+        if [ $? -ne 0 ]; then
+            echo-error "shell: $command' failed."
+            # exit $CODE_ERROR
+        fi
+        return $?
     fi
 
     echo-error "shell: '$command' is not a valid command. See 'shell help'."
-    return 1
+    return $CODE_ERROR
 }

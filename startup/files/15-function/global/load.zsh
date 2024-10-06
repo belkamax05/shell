@@ -1,3 +1,0 @@
-function load() {
-    source ~/.zshrc
-}

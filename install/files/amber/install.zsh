@@ -1,0 +1,1 @@
+bash <(curl -s "https://raw.githubusercontent.com/amber-lang/amber/master/setup/install.sh")
