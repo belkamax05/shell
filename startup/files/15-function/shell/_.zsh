@@ -7,9 +7,8 @@ function shell() {
     if [ -n "$(declare -f shell-$command)" ]; then
         shift
         shell-$command $@
-        if [ $? -ne 0 ]; then
-            echo-error "shell: '$command' failed."
-            # exit $CODE_ERROR
+        if [ $? -ne $CODE_OK ]; then
+            echo-error "'${COLOR_ARGUMENT}shell $command${STYLE_RESET}' failed."
         fi
         return $?
     fi
@@ -17,13 +16,11 @@ function shell() {
     if [ -n "$(declare -f $command)" ]; then
         shift
         $command $@
-        if [ $? -ne 0 ]; then
-            echo-error "shell: $command' failed."
-            # exit $CODE_ERROR
+        if [ $? -ne $CODE_OK ]; then
+            echo-error  "'${COLOR_ARGUMENT}$command${STYLE_RESET}' failed."
         fi
         return $?
     fi
-
     echo-error "shell: '$command' is not a valid command. See 'shell help'."
     return $CODE_NOT_FOUND
 }

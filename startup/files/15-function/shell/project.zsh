@@ -31,6 +31,7 @@ function shell-project() {
             return $CODE_ERROR
         fi
         $scriptName $@
+        return $?
     }
 
     case $1 in
@@ -45,9 +46,11 @@ function shell-project() {
             ;;
         run)
             _run ${@:2}
+            return $?
             ;;
         *)
             _run $@
+            return $?
             ;;
     esac
 }
