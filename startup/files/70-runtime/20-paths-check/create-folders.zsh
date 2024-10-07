@@ -1,0 +1,2 @@
+mkdir -p "$SHELL_DOWNLOAD_DIR"
+mkdir -p "$SHELL_PLUGINS_DIR"

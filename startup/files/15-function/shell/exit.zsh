@@ -5,6 +5,6 @@ function shell-hard-exit() {
 }
 
 function shell-soft-exit() {
-    shell clear startup
+    shell clear cache
     exit 0
 }
