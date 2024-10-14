@@ -8,6 +8,7 @@ alias load="shell load"
 alias reload="shell reload"
 alias here="shell here"
 alias me="shell me"
+alias sc="shell compile"
 
 #? shorthands
 

@@ -31,7 +31,13 @@ function shell-project() {
             return $CODE_ERROR
         fi
         $scriptName $@
-        return $?
+        local _status=$?
+        if [ $_status -eq $CODE_OK ]; then
+            return $CODE_OK
+        elif [ $_status -ne $CODE_NOT_FOUND ]; then
+            echo-error "Unknown project error $_status. $@"
+        fi
+        return $_status
     }
 
     case $1 in

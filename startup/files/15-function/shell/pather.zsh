@@ -21,6 +21,11 @@ function shell-pather() {
     _update() { #? shell foldder changes
         debug-function pather "You switched to $(pwd)"
         _dir_change
+        if [ $SHELL_IS_BACK_PROCESSING -eq 0 ]; then
+            shell_navigation_list[$#shell_navigation_list+1]=$PWD
+            return
+        fi
+        
     }
 
     debug-function "shell-on-path-change" "Args: $@, Current: $PWD"
