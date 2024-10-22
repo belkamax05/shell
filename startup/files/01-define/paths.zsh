@@ -21,3 +21,5 @@ SHELL_LINKS_DIR="$SHELL_DIR/links"
 
 SHELL_LIBS_SRC_DIR="$SHELL_DIR/libs"
 SHELL_LIBS_DIST_DIR="$SHELL_CACHE_DIR/libs"
+
+# export PATH="$PATH:/usr/local/bin/docker"

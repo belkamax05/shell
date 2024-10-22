@@ -11,15 +11,15 @@ function shell-cmd() {
         local _status=$?
         if [ $_status -ne $CODE_OK ] && [ $_status -ne $CODE_NOT_FOUND ]; then
             echo-error "'${COLOR_ARGUMENT}shell $command${STYLE_RESET}' failed. Status: $_status"
-            
+
         fi
         return $_status
-        
+
     fi
 
     #? run via '$command'
     if [ -n "$(declare -f $command)" ]; then
-        $command  ${@:2}
+        $command ${@:2}
         local _status=$?
         if [ $_status -ne $CODE_OK ] && [ $_status -ne $CODE_NOT_FOUND ]; then
             echo-error "'${COLOR_ARGUMENT}shell $command${STYLE_RESET}' failed. Status: $_status"
@@ -36,5 +36,12 @@ function shell-cmd() {
         fi
         return $_status
     fi
+
+    #? run script from scripts
+    if [ -f "$SHELL_SCRIPTS_DIR/$command.zsh" ]; then
+        source "$SHELL_SCRIPTS_DIR/$command.zsh" ${@:2}
+        return $CODE_OK
+    fi
+
     return $CODE_NOT_FOUND
 }
