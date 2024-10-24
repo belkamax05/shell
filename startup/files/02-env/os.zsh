@@ -1,1 +1,3 @@
-export SHELL_OS=$(uname -s)
+export SHELL_OS="$(uname -s)"
+SHELL_UNAME="$(uname -s)"
+
