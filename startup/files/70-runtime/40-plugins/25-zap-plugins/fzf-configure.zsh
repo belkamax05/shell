@@ -1,7 +1,3 @@
-shell-is linux && DEFAULT_FILE_FINDER=fdfind
-shell-is darwin && DEFAULT_FILE_FINDER=fd
-
-#? Pre-experiments
 
 # # Feed the output of fd into fzf
 # fd --type f --strip-cwd-prefix | fzf

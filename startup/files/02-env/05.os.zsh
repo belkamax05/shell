@@ -7,3 +7,7 @@ _shellIsLinux() {
 _shellIsDarwin() {
     [ "$SHELL_UNAME" = "Darwin" ]
 }
+
+
+_shellIsLinux && DEFAULT_FILE_FINDER=fdfind
+_shellIsDarwin && DEFAULT_FILE_FINDER=fd
