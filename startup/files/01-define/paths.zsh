@@ -30,4 +30,4 @@ SHELL_LIBS_DIST_DIR="$SHELL_CACHE_DIR/libs"
 
 # export PATH="$PATH:/usr/local/bin/docker"
 ZAP_DIR="$SHARED_DIR/zap"
-
+export XDG_DATA_HOME="$SHARED_DIR"

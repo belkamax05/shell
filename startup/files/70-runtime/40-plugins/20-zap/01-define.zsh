@@ -1,3 +1,4 @@
-# export XDG_DATA_HOME="$SHELL_PLUGINS_DIR"
-# export ZAP_DIR="$SHELL_PLUGINS_DIR/zap"
+if [[ ! -d $ZAP_DIR ]]; then
+    s-run install zap
+fi
 source $ZAP_DIR/zap.zsh
