@@ -3,7 +3,8 @@ if [[ $CODE_INSTALLED != "" ]]; then
     echo-info "code is already installed"
 else
     echo-info "code is not installed"
-    wget -O ~/Downloads/code.deb https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
+    # wget -O ~/Downloads/code.deb https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
+    wget -O ~/Downloads/code.deb https://go.microsoft.com/fwlink/?LinkID=760868
     sudo dpkg -i ~/Downloads/code.deb
     _status=$?
     rm ~/Downloads/code.deb

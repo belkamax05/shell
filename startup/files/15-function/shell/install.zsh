@@ -30,12 +30,12 @@ function shell-install() {
         echo-error "Function $function_name not found"
         return $CODE_ERROR
     }
-    _install_required() {
-        debug-install "Installing required packages..."
-        mkdir -p "$SHELL_PLUGINS_DIR"
-        s-run install zap
-        s-run install nvm
-    }
+    # _install_required() {
+    #     debug-install "Installing required packages..."
+    #     mkdir -p "$SHELL_PLUGINS_DIR"
+    #     # s-run install zap
+    #     # s-run install nvm
+    # }
     case $1 in
         cancel)
             _cancel ${@:2}
@@ -43,9 +43,9 @@ function shell-install() {
         run)
             _run ${@:2}
             ;;
-        required)
-            _install_required ${@:2}
-            ;;
+        # required)
+        #     _install_required ${@:2}
+        #     ;;
         *)
             _run $@
             ;;
