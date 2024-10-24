@@ -1,8 +1,5 @@
-if [ "$SHELL_OS" = "Darwin" ]; then
-    DEFAULT_FILE_FINDER=fd
-elif [ "$SHELL_OS" = "Linux" ]; then
-    DEFAULT_FILE_FINDER=fdfind
-fi
+shell-is linux && DEFAULT_FILE_FINDER=fdfind
+shell-is darwin && DEFAULT_FILE_FINDER=fd
 
 #? Pre-experiments
 
