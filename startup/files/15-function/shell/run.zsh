@@ -1,4 +1,4 @@
-function shell-cmd() {
+function shell-run() {
     local command=$1
     if [ -z "$command" ]; then
         echo-error "shell: command is required. See 'shell help'."
@@ -44,4 +44,9 @@ function shell-cmd() {
     fi
 
     return $CODE_NOT_FOUND
+}
+
+function s-run() {
+    shell-run $@
+    return $?
 }

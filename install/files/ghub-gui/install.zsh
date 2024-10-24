@@ -10,9 +10,9 @@ _installGHGui() {
         
     }
     _makeAll() {
-        shell nav $SHELL_PLUGINS_DIR/ghub-gui
+        s-run nav $SHELL_PLUGINS_DIR/ghub-gui
         make all
-        shell nav back
+        s-run nav back
     }
 
     _ubuntuDependencies

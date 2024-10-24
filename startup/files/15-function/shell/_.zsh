@@ -1,5 +1,10 @@
 function shell() {
-    shell-cmd $@
+    SHELL_IS_VERBOSE=false
+    if [[ "$@" == *"--verbose"* || "$@" == *"--logs"* ]]; then
+        SHELL_IS_VERBOSE=true
+    fi
+
+    s-run $@
     local _status=$?
     if [ $_status -eq $CODE_OK ]; then
         return $CODE_OK

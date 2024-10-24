@@ -1,5 +1,5 @@
 function shell-compile() {
-    shell clear cache
-    shell build
-    shell reload
+    s-run clear cache
+    s-run build
+    s-run reload
 }

@@ -7,7 +7,7 @@ function shell-nav() {
         done
     }
     _add() {
-        shell pather add-alias $@
+        s-run pather add-alias $@
     }
     _back() {
         local prevPath=${shell_navigation_list[$(( ${#shell_navigation_list[@]} - 1 ))]}
@@ -28,9 +28,9 @@ function shell-nav() {
     }
     _run() {
         local navPath=$1
-        debug-function shell-nav "Args: $@, path: $navPath"
+        verbose-info "Navigate to ${COLOR_ARGUMENT}$navPath${STYLE_RESET}. Args: $@"
         if [ $navPath = "back" ]; then
-            shell pather back $@
+            s-run pather back $@
             return $?
         fi
         if [ ! -d "$navPath" ]; then

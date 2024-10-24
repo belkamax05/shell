@@ -3,7 +3,7 @@ shell-not-found() {
         echo-error "${COLOR_COMMAND}not-found${STYLE_RESET}" $@
     }
     if [ $SHELL_IS_PROJECT -eq 1 ]; then
-        shell-cmd project $@
+        s-run project $@
         local _status=$?
         if [ $_status -eq $CODE_OK ]; then
             return $CODE_OK
@@ -12,7 +12,7 @@ shell-not-found() {
             return $_status
         fi
     fi
-    shell-cmd $@
+    s-run $@
     local _status=$?
     if [ $_status -eq $CODE_OK ]; then
         return $CODE_OK

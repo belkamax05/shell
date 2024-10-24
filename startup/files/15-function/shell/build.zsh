@@ -2,7 +2,7 @@ function shell-build() {
     _shell() {
         rm -rf $SHELL_LIBS_DIST_DIR
         mkdir -p $SHELL_LIBS_DIST_DIR
-        shell files build $SHELL_STARTUP_FILES_DIR $SHELL_STARTUP_FILE
+        s-run files build $SHELL_STARTUP_FILES_DIR $SHELL_STARTUP_FILE
     }
 
     debug-function shell-build $@
@@ -12,10 +12,10 @@ function shell-build() {
             _shell ${@:2}
             ;;
         files)
-            shell files build ${@:2}
+            s-run files build ${@:2}
             ;;
         *)
-            shell build shell $@
+            s-run build shell $@
             ;;
     esac
 }

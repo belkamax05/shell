@@ -3,7 +3,7 @@ function on-shell-runtime() {
     if [ ! -d "$WS_DIR" ]; then
         git clone git@github.com:belkamax05/ws.git "$WS_DIR"
     fi
-    shell files build-include $WS_DIR/zsh $SHELL_CACHE_DIR/ws.zsh
+    s-run files build-include $WS_DIR/zsh $SHELL_CACHE_DIR/ws.zsh
 }
 
 SHELL_DIR="$HOME/shell"

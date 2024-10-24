@@ -1,3 +1,3 @@
 if [ -d "$MVN_DIR" ]; then
-    shell install cancel
+    s-run install cancel
 fi

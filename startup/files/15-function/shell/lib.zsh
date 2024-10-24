@@ -3,7 +3,7 @@
 
 shell-lib() {
     _compileLib() {
-        shell files build $SHELL_LIBS_SRC_DIR/$1 $SHELL_LIBS_DIST_DIR/$1.zsh
+        s-run files build $SHELL_LIBS_SRC_DIR/$1 $SHELL_LIBS_DIST_DIR/$1.zsh
     }
     _includeLib() {
         if [ ! -f $SHELL_LIBS_DIST_DIR/$1.zsh ]; then

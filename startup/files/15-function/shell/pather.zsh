@@ -12,7 +12,7 @@ function shell-pather() {
         fi
     }
     _dir_change() {
-        shell project pwd-check
+        s-run project pwd-check
     }
     _init() { #? every time shell is preparing to run at folder
         debug-function pather "You are currently at $(pwd)"
