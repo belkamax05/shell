@@ -1,1 +1,0 @@
-/home/belkamax05/.shell/startup/files/00-kernel/50.debug.zsh

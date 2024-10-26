@@ -1,3 +1,3 @@
-if [ "$STARTUP_RUNS_FROM_SOURCE" = 1 ]; then
+if [[ $STARTUP_RUNS_FROM_SOURCE == true ]]; then
     s-run compile
 fi

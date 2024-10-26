@@ -1,1 +1,0 @@
-echo "Hello from MacOS initialize script"

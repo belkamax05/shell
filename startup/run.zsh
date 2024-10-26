@@ -1,12 +1,11 @@
-__RUN_STARTUP_CACHED_FILE="$SHELL_DIR/data/cache/startup.zsh"
-__RUN_STARTUP_FILES_DIR="$SHELL_DIR/startup/files"
+source "$SHELL_DIR/startup/files/01-define/paths.zsh"
 
-if [ -f "$__RUN_STARTUP_CACHED_FILE" ]; then
-  STARTUP_RUNS_FROM_SOURCE=0
-  source "$__RUN_STARTUP_CACHED_FILE"
+if [ -f "$SHELL_STARTUP_FILE" ]; then
+  STARTUP_RUNS_FROM_SOURCE=false
+  source "$SHELL_STARTUP_FILE"
 else
-  STARTUP_RUNS_FROM_SOURCE=1
-  for file in $(find "$__RUN_STARTUP_FILES_DIR" -type f | sort); do
+  STARTUP_RUNS_FROM_SOURCE=true
+  for file in $(find "$SHELL_STARTUP_FILES_DIR" -type f | sort); do
       source "$file"
   done
 fi

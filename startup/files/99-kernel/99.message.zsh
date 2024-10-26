@@ -1,1 +1,0 @@
-# echo "Shell is loaded"

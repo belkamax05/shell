@@ -1,0 +1,1 @@
+gsettings set org.gnome.SessionManager logout-prompt false

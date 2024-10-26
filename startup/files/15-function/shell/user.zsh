@@ -1,28 +1,9 @@
 shell-user() {
     _userGet() {
-        local variableName=$1
-        if [ ! -f $SHELL_SHARED_DIR/.user-config ]; then
-            echo ""
-            return
-        fi
-        local userValue=$(cat $SHELL_SHARED_DIR/.user-config | grep $variableName | cut -d'=' -f2)
-        echo "$userValue"
+        s-run config-file get $SHELL_SHARED_DIR/.user-config $@
     }
     _userSet() {
-        local variableName=$1
-        local variableValue=$2
-        local envFile="$SHELL_SHARED_DIR/.user-config"
-
-        mkdir -p "$SHELL_SHARED_DIR"
-        touch "$envFile"
-        # Check if the variable already exists in the file
-        if grep -q "^$variableName=" "$envFile"; then
-            # Update the existing variable
-            sed -i '' "s/^$variableName=.*/$variableName=$variableValue/" "$envFile"
-        else
-            # Add the new variable
-            echo "$variableName=$variableValue" >>"$envFile"
-        fi
+        s-run config-file set $SHELL_SHARED_DIR/.user-config $@
     }
 
     case $1 in
