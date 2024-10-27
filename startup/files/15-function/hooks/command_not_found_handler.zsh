@@ -1,6 +1,6 @@
 function command_not_found_handler {
     local command="$1"
-    if [ "$STARTUP_COMPLETE" = 1 ]; then
+    if [[ $STARTUP_COMPLETE == true ]]; then
         shell-not-found $@
         local _status=$?
         return $_status

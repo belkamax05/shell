@@ -1,0 +1,55 @@
+[core]
+excludesfile = /Users/maksym.bondarchuk/.gitignore_global
+editor = vim
+[difftool "sourcetree"]
+cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+path =
+[mergetool "sourcetree"]
+cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+trustExitCode = true
+[user]
+email = maksym.bondarchuk@wundermanthompson.com
+name = Maksym Bondarchuk
+[push]
+autoSetupRemote = true
+autoSetupRemote = true
+[commit]
+template = /Users/maksym.bondarchuk/.stCommitMsgi
+
+[alias]
+aa = add -A
+au = add -u
+st = status -s
+sta = status
+conf = config --global --edit
+cge = config --global --edit
+ci = commit
+co = checkout
+cod = checkout .
+rh = reset HEAD
+cdf = clean -df # command is used to remove untracked files and directories from your Git repository.
+br = branch
+bra = branch -a
+pr = pull --rebase
+amend = commit -a --amend --no-edit
+ciam = commit -a --amend --no-edit
+last = log -10 --oneline
+ps = push
+psn = push --no-verify
+cm = commit -m
+cmn = commit --no-verify -m
+sw = switch
+swc = switch -c
+hard-reset = "!f() { git reset --hard HEAD; git clean -df; }; f"
+soft-reset = "!f() { git reset --soft HEAD~1; }; f"
+pp = "!f() { git pull; git ps; }; f"
+qps = "!f() { git au; git cm \"$1\"; git ps; }; f"
+qpsn = "!f() { git au; git cmn \"$1\"; git psn; }; f"
+quick-push = "!f() { git cmn \"$1\"; git psn; }; f"
+pull-branch = "!f() { git merge --no-commit --squash \"$1\"; git reset HEAD; }; f"
+vml = "!f() { git config --global user.email maksym.bondarchuk@wundermanthompson.com; }; f"
+personal = "!f() { git config --global user.email belkamax05@gmail.com; }; f"
+about = !zsh -c 'source ~/.zshrc && az error "Hello"'
+commit = !zsh -c 'echo "TODO"'
+me = "!zsh -c 'source ~/.zshrc && f() { shell git me '$@'; }; f'"
+gho = "!zsh -c 'source ~/.zshrc && f() { shell git gho '$@'; }; f'"

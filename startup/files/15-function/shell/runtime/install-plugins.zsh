@@ -1,7 +1,7 @@
 shell-runtime-install-plugins() {
     SHELL_INSTALL_COMPLETE=$(s-run user get SHELL_INSTALL_COMPLETE)
     if [[ $SHELL_INSTALL_COMPLETE != true ]]; then
-        for package in curl file git zap mvn fzf lsd neofetch fd-find; do
+        for package in openssl curl file git zap mvn fzf lsd neofetch fd-find erdtree; do
             s-run install2 $package
         done
         if s-run is linux; then
