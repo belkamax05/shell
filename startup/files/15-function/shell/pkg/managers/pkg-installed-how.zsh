@@ -17,9 +17,17 @@ shell-pkg-installed-how() {
         installed_pkg_managers+="brew "
         $stop_at_first && echo "${installed_pkg_managers% }" && return
     fi
-    if s-run script-pkg-is-installed $pkg_name; then
-        installed_pkg_managers+="script "
+    # if s-run script-pkg-is-installed $pkg_name; then
+    #     installed_pkg_managers+="script "
+    #     $stop_at_first && echo "${installed_pkg_managers% }" && return
+    # fi
+    if command -v $pkg_name &> /dev/null; then
+        installed_pkg_managers+="shell "
         $stop_at_first && echo "${installed_pkg_managers% }" && return
+    fi
+    if dpkg -l | grep -q $pkg_name; then
+        installed_pkg_managers+="debX "
+        $stop_at_first && echo
     fi
     # if which $pkg_name &> /dev/null; then
     #     installed_pkg_managers+="shell "

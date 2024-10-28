@@ -6,11 +6,5 @@ shell-script-pkg-just-install() {
         s-run script-pkg-set-installed $1 true
         return $CODE_OK
     fi
-    if [ -f "$installDir/$1.zsh" ]; then
-        echo-info "Installing Script package '${COLOR_YELLOW}$1${STYLE_RESET}'..."
-        source "$installDir/$1.zsh"
-        s-run script-pkg-set-installed $1 true
-        return $CODE_OK
-    fi
     return $CODE_NOT_FOUND
 }
