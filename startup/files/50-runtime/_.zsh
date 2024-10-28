@@ -20,7 +20,6 @@ shell-runtime() {
     fi
 
     #? plugins
-    s-run runtime-nvm-configure
     s-run runtime-zap-plugins
     s-run runtime-fzf-configure
 
@@ -58,5 +57,3 @@ shell-runtime() {
     SHELL_IS_STARTED=true
     #!footer
 }
-
-shell-runtime
