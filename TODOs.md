@@ -1,2 +1,2 @@
-- create 'scripts' with built-time alias
-- 
+- /bin/shell
+- git me
