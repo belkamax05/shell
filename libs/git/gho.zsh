@@ -1,4 +1,4 @@
-git-command-gho() {
+shell-git-gho() {
     local file=$1
     local remote=${2:-origin}
     local gr=$(git rev-parse --show-toplevel)

@@ -8,7 +8,7 @@ path =
 cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 trustExitCode = true
 [user]
-email = maksym.bondarchuk@wundermanthompson.com
+	email = belkamax05@gmail.com
 name = Maksym Bondarchuk
 [push]
 autoSetupRemote = true
@@ -16,8 +16,6 @@ autoSetupRemote = true
 template = /Users/maksym.bondarchuk/.stCommitMsgi
 
 [alias]
-aa = add -A
-au = add -u
 st = status -s
 sta = status
 conf = config --global --edit
@@ -36,19 +34,37 @@ last = log -10 --oneline
 ps = push
 psn = push --no-verify
 cm = commit -m
-cmn = commit --no-verify -m
 sw = switch
 swc = switch -c
-hard-reset = "!f() { git reset --hard HEAD; git clean -df; }; f"
-soft-reset = "!f() { git reset --soft HEAD~1; }; f"
 pp = "!f() { git pull; git ps; }; f"
-qps = "!f() { git au; git cm \"$1\"; git ps; }; f"
-qpsn = "!f() { git au; git cmn \"$1\"; git psn; }; f"
-quick-push = "!f() { git cmn \"$1\"; git psn; }; f"
-pull-branch = "!f() { git merge --no-commit --squash \"$1\"; git reset HEAD; }; f"
-vml = "!f() { git config --global user.email maksym.bondarchuk@wundermanthompson.com; }; f"
-personal = "!f() { git config --global user.email belkamax05@gmail.com; }; f"
-about = !zsh -c 'source ~/.zshrc && az error "Hello"'
-commit = !zsh -c 'echo "TODO"'
-me = "!zsh -c 'source ~/.zshrc && f() { shell git me '$@'; }; f'"
-gho = "!zsh -c 'source ~/.zshrc && f() { shell git gho '$@'; }; f'"
+qps = "!f() { git stage-modified; git cm \"$1\"; git ps; }; f"
+quick-push = "!f() { git fast-commit \"$1\"; git fast-push; }; f"
+qpsn = "!f() { git stage-modified; git quick-push \"$1\"; }; f"
+
+#! commands
+merge-squash-reset = "!zsh -c 'shell git merge-squash-reset $0 $@'"
+fast-commit = "!zsh -c 'shell git fast-commit $0 $@'"
+fast-push = "!zsh -c 'shell git fast-push $0 $@'"
+dialog-commit = "!zsh -c 'shell git dialog-commit $0 $@'"
+hard-reset = "!zsh -c 'shell git hard-reset $0 $@'"
+soft-reset = "!zsh -c 'shell git soft-reset $0 $@'"
+stage-all = "!zsh -c 'shell git stage-all $0 $@'"
+stage-modified = "!zsh -c 'shell git stage-modified $0 $@'"
+me = "!zsh -c 'shell git me'"
+gho = "!zsh -c 'shell git gho'"
+#! aliases to commands
+msr= "!git merge-squash-reset"
+pull-branch= "!git merge-squash-reset"
+fc= "!git fast-commit"
+dc= "!git dialog-commit"
+cm= "!git dialog-commit"
+comm= "!git dialog-commit"
+fp="!git fast-push"
+fps="!git fast-push"
+hr="!git hard-reset"
+sr="!git soft-reset"
+aa="!git stage-all"
+au="!git stage-modified"
+#! profile
+vml = "!zsh -c 'shell git set-email maksym.bondarchuk@vml.com'"
+personal = "!zsh -c 'shell git set-email belkamax05@gmail.com'"
