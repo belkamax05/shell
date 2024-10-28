@@ -15,6 +15,8 @@ shell-runtime() {
         s-run linker dotfiles
         s-run linker configs
         s-run runtime-apply-tweaks
+    else
+        s-run plugin-init
     fi
 
     #? plugins

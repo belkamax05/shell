@@ -1,6 +1,4 @@
 shell-runtime-zap-plugins() {
-    source $ZAP_DIR/zap.zsh
-
     # for plugin in fzf fzf-tab mvn; do
     #     azSourceSystemPlugin "$plugin/include.zsh"
     # done

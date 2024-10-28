@@ -28,7 +28,7 @@ shell-pkg-just-install() {
         return $CODE_ERROR
     fi
     if [[ $SHELL_PREVENT_INSTALL == true ]]; then
-        echo-warning "Installation of ${COLOR_YELLOW}$1${STYLE_RESET} is prevented"
+        echo-warning "Installation via ${COLOR_CYAN}$installerName${STYLE_RESET} of ${COLOR_YELLOW}$1${STYLE_RESET} is prevented"
         return $CODE_ERROR
     fi
     s-run $installerName-just-install $@

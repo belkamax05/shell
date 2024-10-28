@@ -1,0 +1,1 @@
+(s-run brew-is-installed erd)
