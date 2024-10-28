@@ -12,7 +12,6 @@ email = maksym.bondarchuk@wundermanthompson.com
 name = Maksym Bondarchuk
 [push]
 autoSetupRemote = true
-autoSetupRemote = true
 [commit]
 template = /Users/maksym.bondarchuk/.stCommitMsgi
 
