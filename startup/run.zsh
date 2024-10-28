@@ -1,4 +1,4 @@
-source "$SHELL_DIR/startup/files/01-define/paths.zsh"
+source "$SHELL_DIR/startup/files/01-define/path.zsh"
 
 SHELL_IS_SOURCE=false
 if [ -f "$SHELL_STARTUP_FILE" ]; then

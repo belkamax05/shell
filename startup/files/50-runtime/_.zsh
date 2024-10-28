@@ -1,14 +1,15 @@
 shell-runtime() {
     #!header
-    s-run runtime-rt-header
-
-    #? user-load
+    s-run runtime-timer-start
+    s-run env init
     s-run user load
+    #!header
     
     #? system
-    if s-run is compiling; then
+    if s-run not compiled; then
+        echo-info "Runtime started"
         s-run runtime-create-folders
-        s-run runtime-install-plugins
+        source "$SHELL_INTEGRATION_DIR/runtime-install.zsh"
         s-run linker dotfiles
         s-run linker configs
         s-run runtime-apply-tweaks
@@ -37,8 +38,22 @@ shell-runtime() {
         on-shell-runtime
     fi
 
-    s-run is compiling && s-run pather init
+    s-run not compiled && s-run pather init
+
+    #!compile
+    if s-run not compiled; then
+        echo-info "Runtime finished"
+        s-run build
+        s-run user set SHELL_IS_COMPILED true
+        SHELL_IS_COMPILED=true
+        s-run runtime-timer-stop
+        s-run reload
+    fi
+    #!compile
     
     #!footer
-    s-run runtime-rt-footer
+    SHELL_IS_STARTED=true
+    #!footer
 }
+
+shell-runtime

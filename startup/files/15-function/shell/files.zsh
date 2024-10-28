@@ -29,8 +29,6 @@ function shell-files() {
         source "$output_file"
         return $CODE_OK
     }
-
-    debug-function shell-files $@
     case $1 in
         load)
             _load ${@:2}

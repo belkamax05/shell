@@ -24,9 +24,9 @@ shell-pkg() {
         # echo "$@ is installed by $howInstalled"
         local pkg_name=$1
         if [ -z "$howInstalled" ]; then
-            echo "$pkg_name is not installed"
+            echo-info "Package ${COLOR_YELLOW}$pkg_name${STYLE_RESET} is ${COLOR_RED}not installed${STYLE_RESET}"
         else
-            echo "$pkg_name is installed by $howInstalled"
+            echo-info "Package ${COLOR_YELLOW}$pkg_name${STYLE_RESET} is installed by ${COLOR_CYAN}$howInstalled${STYLE_RESET}"
         fi
         return $CODE_OK
 

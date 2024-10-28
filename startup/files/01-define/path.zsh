@@ -29,15 +29,16 @@ SHELL_LINKS_DIR="$SHELL_DIR/links"
 SHELL_LIBS_SRC_DIR="$SHELL_DIR/libs"
 SHELL_LIBS_DIST_DIR="$SHELL_CACHE_DIR/libs"
 
-# export PATH="$PATH:/usr/local/bin/docker"
 
 #? nvm
-export NVM_DIR=$SHELL_PLUGINS_DIR/nvm
+NVM_DIR=$SHELL_PLUGINS_DIR/nvm
 
 #? zap
 ZAP_DIR="$SHARED_DIR/zap"
-export XDG_DATA_HOME="$SHARED_DIR"
+XDG_DATA_HOME="$SHARED_DIR"
 
 #? mvn
-export MVN_DIR="$SHELL_PLUGINS_DIR/apache-maven-3.9.7"
+MVN_DIR="$SHELL_PLUGINS_DIR/apache-maven-3.9.7"
+
+# export PATH="$PATH:/usr/local/bin/docker"
 export PATH="$MVN_DIR/bin:$PATH"

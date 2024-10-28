@@ -1,4 +1,4 @@
-function shell-pather() {
+shell-pather() {
     _add-alias() { #? adds new alias of path
         paths_alias_list[$1]="$2"
     }
@@ -15,11 +15,11 @@ function shell-pather() {
         s-run project pwd-check
     }
     _init() { #? every time shell is preparing to run at folder
-        debug-function pather "You are currently at $(pwd)"
+        compiling-info "You are currently at $(pwd)"
         _dir_change
     }
     _update() { #? shell foldder changes
-        debug-function pather "You switched to $(pwd)"
+        verbose-info "You switched to $(pwd)"
         _dir_change
         if [ $SHELL_IS_BACK_PROCESSING -eq 0 ]; then
             shell_navigation_list[$#shell_navigation_list+1]=$PWD
@@ -27,8 +27,7 @@ function shell-pather() {
         fi
         
     }
-
-    debug-function "shell-on-path-change" "Args: $@, Current: $PWD"
+    # debug-function "shell-on-path-change" "Args: $@, Current: $PWD"
     case $1 in
         add-alias)
             _add-alias ${@:2}

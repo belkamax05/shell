@@ -1,56 +1,25 @@
 shell-is() {
-    _shellIsCompiled() {
-        if [[ $SHELL_IS_COMPILED == true ]]; then
-            return $CODE_OK
-        else
-            return $CODE_ERROR
-        fi
-    }
-    _shellIsCompiling() {
-        if [[ $SHELL_IS_COMPILED != true ]]; then
-            return $CODE_OK
-        else
-            return $CODE_ERROR
-        fi
-    }
-    _shellIsStarted() {
-        if [[ $SHELL_IS_STARTED == true ]]; then
-            return $CODE_OK
-        else
-            return $CODE_ERROR
-        fi
-    }
-    _shellIsStarting() {
-        if [[ $SHELL_IS_STARTED != true ]]; then
-            return $CODE_OK
-        else
-            return $CODE_ERROR
-        fi
-    }
     case $1 in
         verbose)
-            _shellIsVerbose
+            s-run is-verbose
             ;;
         linux)
-            _shellIsLinux
+            s-run is-linux
             ;;
         darwin)
-            _shellIsDarwin
+            s-run is-darwin
             ;;
         macos)
-            _shellIsDarwin
+            s-run is-darwin
             ;;
         compiled)
-            _shellIsCompiled
-            ;;
-        compiling)
-            _shellIsCompiling
+            s-run is-compiled
             ;;
         started)
-            _shellIsStarted
+            s-run is-started
             ;;
-        starting)
-            _shellIsStarting
+        source)
+            s-run is-source
             ;;
         *)
             return 1

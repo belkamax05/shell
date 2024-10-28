@@ -1,23 +1,21 @@
-
-
-function me() {
-    _v1() {
+shell-me() {
+    _meV1() {
         cat /etc/os-release
     }
-    _v2() {
+    _meV2() {
         neofetch
     }
     
     case $1 in
         1)
-            _v1
+            _meV1
             ;;
         2)
-            _v2
+            _meV2
             ;;
         all)
-            _v1
-            _v2
+            _meV1
+            _meV2
             ;;
         *)
             echo "1: /etc/os-release"

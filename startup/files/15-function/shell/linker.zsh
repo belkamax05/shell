@@ -10,10 +10,10 @@ shell-linker() {
     _linkerConfigs() {
         local target_link="$SHELL_INTEGRATION_DIR/shell-config"
         if [ -L "$target_link" ] || [ -e "$target_link" ]; then
-            echo-info "Recreating link at $target_link"
+            echo-info "Recreating link at ${COLOR_YELLOW}$target_link${STYLE_RESET}..."
             rm -rf "$target_link"
         else
-            echo-info "Creating configs linking at $target_link..."
+            echo-info "Creating configs linking at ${COLOR_YELLOW}$target_link${STYLE_RESET}..."
         fi
         ln -s "$SHELL_SHARED_DIR" "$target_link"
     }

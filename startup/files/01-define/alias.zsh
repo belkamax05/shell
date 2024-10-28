@@ -39,3 +39,4 @@ alias la='ls -A'
 alias l='ls -CF'
 
 alias fd="fdfind"
+alias pip=pip3

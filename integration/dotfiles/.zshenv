@@ -1,9 +1,6 @@
 # . "$HOME/.cargo/env"
-
 # export Z_OS="Unknown"
-
 # case "$(uname -s)" in
-
 # Darwin)
 #     export Z_OS="MacOS"
 #     ;;
@@ -15,3 +12,4 @@
 #     ;;
 # *) ;;
 # esac
+SHELL_UNAME="$(uname -s)"

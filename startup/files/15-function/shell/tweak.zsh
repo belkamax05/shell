@@ -18,7 +18,7 @@ shell-tweak() {
                 echo-error "Tweak '${COLOR_YELLOW}$1${STYLE_RESET}' not found."
             fi
         else
-            echo-info "Skipping tweak '${COLOR_YELLOW}$1${STYLE_RESET}'..."
+            echo-info "Skipping already installed tweak '${COLOR_YELLOW}$1${STYLE_RESET}'..."
         fi
     }
 
