@@ -9,7 +9,8 @@ shell-runtime() {
     if s-run not compiled; then
         echo-info "Runtime started"
         s-run runtime-create-folders
-        source "$SHELL_INTEGRATION_DIR/runtime-install.zsh"
+        source "$SHELL_CONFIGS_DIR/install-required.zsh"
+        [[ $SHELL_INSTALL_OPTIONAL == true ]] && source "$SHELL_CONFIGS_DIR/install-optional.zsh"
         s-run linker dotfiles
         s-run linker configs
         s-run runtime-apply-tweaks

@@ -12,4 +12,4 @@
 #     ;;
 # *) ;;
 # esac
-SHELL_UNAME="$(uname -s)"
+export SHELL_UNAME="$(uname -s)"

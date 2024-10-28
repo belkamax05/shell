@@ -3,9 +3,9 @@
 
 # PATH="/Library/Frameworks/Python.framework/Versions/3.12/bin:${PATH}"
 
-# if [ "$Z_OS" = "Linux" ]; then
-#     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-# fi
+if [[ $SHELL_UNAME == "Linux" ]]; then
+    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
 # PATH="/opt/homebrew/bin:$PATH"            # Brew (MacOS / Linux)
 # PATH="~/bin/apache-maven-3.9.6/bin:$PATH" # Maven
 # export PATH

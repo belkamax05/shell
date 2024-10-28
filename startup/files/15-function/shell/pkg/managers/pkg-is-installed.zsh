@@ -16,7 +16,7 @@ shell-pkg-is-installed() {
         return $?
     fi
     local howInstalled=$(s-run pkg-installed-how $@ --first)
-    if [ -z "$howInstalled" ]; then
+    if [ ! -z "$howInstalled" ]; then
         return $CODE_ERROR
     else
         return $CODE_OK

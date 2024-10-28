@@ -1,35 +1,35 @@
 shell-pkg-just-install() {
-    if [[ "$@" == *"--brew"* ]]; then
-        s-run brew-just-install $@
-        return $?
-    fi
-    if [[ "$@" == *"--deb"* ]]; then
-        s-run deb-just-install $@
-        return $?
-    fi
-    if [[ "$@" == *"--snap"* ]]; then
-        s-run snap-just-install $@
-        return $?
-    fi
-    if [[ "$@" == *"--script"* ]]; then
-        s-run script-just-install $@
-        return $?
-    fi
+    local installerName=""
+    [[ "$@" == *"--brew"* ]] && installerName="brew"
+    [[ "$@" == *"--deb"* ]] && installerName="deb"
+    [[ "$@" == *"--snap"* ]] && installerName="snap"
+    [[ "$@" == *"--script-pkg"* ]] && installerName="script-pkg"
+    [[ "$@" == *"--script"* ]] && installerName="script-pkg"
 
     if s-run script-pkg-can-install $@; then
-        s-run script-pkg-just-install $@
-        return $?
+        installerName="script-pkg"
     fi
     if s-run snap-can-install $@; then
-        s-run snap-just-install $@
-        return $?
+        installerName="snap"
     fi
     if s-run brew-can-install $@; then
-        s-run brew-just-install $@
-        return $?
+        installerName="brew"
     fi
     if s-run deb-can-install $@; then
-        s-run deb-just-install $@
-        return $?
+        installerName="deb"
     fi
+    # s-run script-pkg-can-install "$@" && installerName="snap"
+    # s-run snap-can-install "$@" && installerName="snap"
+    # s-run brew-can-install "$@" && installerName="brew"
+    # s-run deb-can-install "$@" && installerName="deb"
+
+    if [[ -z $installerName ]]; then
+        echo-error "No installer found for $@. ($installerName)"
+        return $CODE_ERROR
+    fi
+    if [[ $SHELL_PREVENT_INSTALL == true ]]; then
+        echo-warning "Installation of ${COLOR_YELLOW}$1${STYLE_RESET} is prevented"
+        return $CODE_ERROR
+    fi
+    s-run $installerName-just-install $@
 }

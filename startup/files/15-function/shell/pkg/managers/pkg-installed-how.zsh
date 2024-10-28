@@ -21,5 +21,9 @@ shell-pkg-installed-how() {
         installed_pkg_managers+="script "
         $stop_at_first && echo "${installed_pkg_managers% }" && return
     fi
+    # if which $pkg_name &> /dev/null; then
+    #     installed_pkg_managers+="shell "
+    #     $stop_at_first && echo "${installed_pkg_managers% }" && return
+    # fi
     echo "${installed_pkg_managers% }"
 }

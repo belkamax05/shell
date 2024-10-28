@@ -1,5 +1,5 @@
 shell-env-load() {
-    local runtimeConfigsFile="$SHELL_INTEGRATION_DIR/runtime-configs.zsh"
+    local runtimeConfigsFile="$SHELL_CONFIGS_DIR/config-overrides.zsh"
     if [[ -f $runtimeConfigsFile ]]; then
         source $runtimeConfigsFile
     else

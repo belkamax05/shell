@@ -8,7 +8,7 @@ shell-linker() {
     }
 
     _linkerConfigs() {
-        local target_link="$SHELL_INTEGRATION_DIR/shell-config"
+        local target_link="$SHELL_CONFIGS_DIR/shell-config"
         if [ -L "$target_link" ] || [ -e "$target_link" ]; then
             echo-info "Recreating link at ${COLOR_YELLOW}$target_link${STYLE_RESET}..."
             rm -rf "$target_link"

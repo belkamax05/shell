@@ -1,7 +1,7 @@
 SHELL_DATA_DIR="$SHELL_DIR/data"
 
-SHELL_INTEGRATION_DIR="$SHELL_DIR/integration"
-SHELL_DOTFILES_DIR="$SHELL_INTEGRATION_DIR/dotfiles"
+SHELL_CONFIGS_DIR="$SHELL_DIR/configs"
+SHELL_DOTFILES_DIR="$SHELL_CONFIGS_DIR/dotfiles"
 
 SHARED_DIR="$HOME/.local/share"
 SHELL_SHARED_DIR="$SHARED_DIR/shell"
@@ -42,3 +42,4 @@ MVN_DIR="$SHELL_PLUGINS_DIR/apache-maven-3.9.7"
 
 # export PATH="$PATH:/usr/local/bin/docker"
 export PATH="$MVN_DIR/bin:$PATH"
+export PATH="/home/.linuxbrew/bin:$PATH"
