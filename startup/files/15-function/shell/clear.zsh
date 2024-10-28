@@ -1,7 +1,6 @@
 function shell-clear-cache() {
     # debug-function clear-cache $@
     rm -rf "$SHELL_CACHE_DIR"
-    rm -f $SHELL_SHARED_DIR/.user-config
 }
 
 function shell-clear-startup() {

@@ -18,9 +18,6 @@ shell-is() {
         started)
             s-run is-started
             ;;
-        source)
-            s-run is-source
-            ;;
         *)
             return 1
             ;;
