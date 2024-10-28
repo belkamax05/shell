@@ -1,3 +1,3 @@
 shell-runtime-rt-header() {
-    echo-info "--- Runtime header goes here"
+    s-run is compiling && echo-info "Runtime started"
 }

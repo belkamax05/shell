@@ -13,17 +13,17 @@ echo-info() {
 }
 
 verbose-echo() {
-    shell-is verbose && echo "$@"
+    s-run is verbose && echo "$@"
 }
 verbose-error() {
-    shell-is verbose && echo-error "$@"
+    s-run is verbose && echo-error "$@"
 }
 verbose-success() {
-    shell-is verbose && echo-success "$@"
+    s-run is verbose && echo-success "$@"
 }
 verbose-debug() {
-    shell-is verbose && echo-debug "$@"
+    s-run is verbose && echo-debug "$@"
 }
 verbose-info() {
-    shell-is verbose && echo-info "$@"
+    s-run is verbose && echo-info "$@"
 }

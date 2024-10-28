@@ -5,14 +5,17 @@ shell-linker() {
         ln -sf "$SHELL_DOTFILES_DIR/.zprofile" "$HOME/.zprofile"
         ln -sf "$SHELL_DOTFILES_DIR/.zshenv" "$HOME/.zshenv"
         ln -sf "$SHELL_DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
-        
-        # shell-user set SHELL_LINKING_COMPLETE true
     }
 
     _linkerConfigs() {
-        echo-info "Creating configs linking..."
-        ln -s "$SHELL_SHARED_DIR" "$SHELL_INTEGRATION_DIR/shell-config"
-        # shell-user set SHELL_LINKING_COMPLETE true
+        local target_link="$SHELL_INTEGRATION_DIR/shell-config"
+        if [ -L "$target_link" ] || [ -e "$target_link" ]; then
+            echo-info "Recreating link at $target_link"
+            rm -rf "$target_link"
+        else
+            echo-info "Creating configs linking at $target_link..."
+        fi
+        ln -s "$SHELL_SHARED_DIR" "$target_link"
     }
 
     case $1 in

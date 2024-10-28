@@ -1,3 +1,5 @@
-if [[ $STARTUP_RUNS_FROM_SOURCE == true ]]; then
-    s-run compile
-fi
+s-run runtime
+[[ $SHELL_IS_SOURCE == true ]] && s-run compile
+s-run user set SHELL_IS_COMPILED true
+SHELL_IS_COMPILED=true
+SHELL_IS_STARTED=true

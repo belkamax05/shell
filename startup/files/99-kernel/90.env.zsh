@@ -1,1 +1,0 @@
-STARTUP_COMPLETE=true
