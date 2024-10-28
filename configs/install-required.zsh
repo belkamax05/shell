@@ -1,5 +1,5 @@
 echo-info "Installing ${COLOR_CYAN}REQUIRED${STYLE_RESET} packages"
-_installPackages="brew openssl curl file git zap nvm mvn fzf lsd neofetch"
+_installPackages="brew openssl curl file git zap nvm mvn fzf lsd neofetch gum"
 if s-run is linux; then
     _installPackages="$_installPackages fd-find snapd"
 fi
