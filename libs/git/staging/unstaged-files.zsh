@@ -1,5 +1,5 @@
 shell-git-unstaged-files() {
-    _unstagedFiles=$(git unstaged-modified-files)
+    _unstagedFiles=$(git modified-files)
     _newFiles=$(git created-files)
     _allFiles="$_unstagedFiles"$'\n'"$_newFiles"
     #? Remove any empty lines

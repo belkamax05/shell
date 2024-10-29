@@ -39,7 +39,9 @@ XDG_DATA_HOME="$SHARED_DIR"
 #? mvn
 MVN_DIR="$SHELL_PLUGINS_DIR/apache-maven-3.9.7"
 
+CURRENT_FILE_PATH="${(%):-%x}"
+
 # export PATH="$PATH:/usr/local/bin/docker"
 export PATH="$MVN_DIR/bin:$PATH"
 export PATH="/home/.linuxbrew/bin:$PATH"
-CURRENT_FILE_PATH="${(%):-%x}"
+export PATH="$HOME/bin:$PATH"
