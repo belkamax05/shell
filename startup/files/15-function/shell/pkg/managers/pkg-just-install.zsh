@@ -33,3 +33,24 @@ shell-pkg-just-install() {
     fi
     s-run $installerName-just-install $@
 }
+
+# shell-pkg-can-install-how() {
+#     local installerName=""
+#     [[ "$@" == *"--brew"* ]] && installerName="brew" && echo "$installerName"; return
+#     [[ "$@" == *"--deb"* ]] && installerName="deb" && echo "$installerName"; return
+#     [[ "$@" == *"--snap"* ]] && installerName="snap" && echo "$installerName"; return
+#     [[ "$@" == *"--script-pkg"* ]] && installerName="script-pkg" && echo "$installerName"; return
+#     [[ "$@" == *"--script"* ]] && installerName="script-pkg" && echo "$installerName"; return
+#     s-run script-pkg-can-install "$@" && installerName="snap" && echo "$installerName"; return
+#     s-run snap-can-install "$@" && installerName="snap" && echo "$installerName"; return
+#     s-run brew-can-install "$@" && installerName="brew" && echo "$installerName"; return
+#     s-run deb-can-install "$@" && installerName="deb" && echo "$installerName"; return
+#     # echo "$installerName"
+# }
+# shell-pkg-can-install() {
+#     local _howCanInstall=$(shell-pkg-can-install-how $@)
+#     if [[ -z $_howCanInstall ]]; then
+#        return $CODE_ERROR
+#     fi
+#     return $CODE_OK
+# }

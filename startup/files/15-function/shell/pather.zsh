@@ -27,7 +27,6 @@ shell-pather() {
         fi
         
     }
-    # debug-function "shell-on-path-change" "Args: $@, Current: $PWD"
     case $1 in
         add-alias)
             _add-alias ${@:2}

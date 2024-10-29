@@ -56,45 +56,17 @@ compiling-warning() {
 
 
 debug() {
-    if [ "$DEBUG_ENABLED" = 1 ]; then
-        echo-debug "$@"
-    fi
+    s-run is debug && echo-debug "$@"
 }
 debug-command() {
     debug "${COLOR_COMMAND}[$1]${STYLE_RESET}: ${@:2}"
 }
-debug-timer() {
-    if [ "$DEBUG_TIMER" = 1 ]; then
-        debug-command timer $@
-    fi
-}
-debug-install() {
-    if [ "$DEBUG_INSTALL" = 1 ]; then
-        debug-command install $@
-    fi
-}
-debug-function() {
-    if [ "$DEBUG_FUNCTION" = 1 ]; then
-        debug-command $@
-    fi
-}
-debug-function-verbose() {
-    if [ "$DEBUG_FUNCTION_VERBOSE" = 1 ]; then
-        debug-command $@
-    fi
-}
 debug-error() {
-    if [ "$DEBUG_ENABLED" = 1 ]; then
-        echo-error "DEBUG: $@"
-    fi
+    s-run is debug && echo-error "DEBUG: $@"
 }
 debug-info() {
-    if [ "$DEBUG_ENABLED" = 1 ]; then
-        echo-info "DEBUG: $@"
-    fi
+    s-run is debug && echo-info "DEBUG: $@"
 }
 debug-success() {
-    if [ "$DEBUG_ENABLED" = 1 ]; then
-        echo-success "DEBUG: $@"
-    fi
+    s-run is debug && echo-success "DEBUG: $@"
 }

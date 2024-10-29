@@ -1,3 +1,3 @@
-function shell-reload() {
+shell-reload() {
     exec zsh
 }

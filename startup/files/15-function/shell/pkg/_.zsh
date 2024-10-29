@@ -1,6 +1,4 @@
 shell-pkg() {
-   
-
     case $1 in
         is-installed)
             s-run pkg-is-installed ${@:2};
@@ -25,4 +23,10 @@ shell-install() {
 }
 shell-remove() {
     s-run pkg remove $@
+}
+shell-just-install() {
+    s-run pkg just-install $@
+}
+shell-is-installed() {
+    s-run pkg is-installed $@
 }

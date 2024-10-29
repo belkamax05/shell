@@ -1,4 +1,4 @@
-function on-shell-runtime() {
+on-shell-runtime() {
     WS_DIR="$HOME/ws"
     if [ ! -d "$WS_DIR" ]; then
         git clone git@github.com:belkamax05/ws.git "$WS_DIR"

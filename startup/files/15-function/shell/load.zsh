@@ -1,3 +1,3 @@
-function shell-load() {
+shell-load() {
     source ~/.zshrc
 }

@@ -1,18 +1,15 @@
-function shell-clear-cache() {
-    # debug-function clear-cache $@
+shell-clear-cache() {
+    debug-info "Clear cache at ${COLOR_ARGUMENT}$SHELL_CACHE_DIR${STYLE_RESET}"
     rm -rf "$SHELL_CACHE_DIR"
 }
 
-function shell-clear-startup() {
-    # debug-function clear-startup $@
+shell-clear-startup() {
+    debug-info "Clear startup file at ${COLOR_ARGUMENT}$SHELL_STARTUP_FILE${STYLE_RESET}"
     rm -rf "$SHELL_STARTUP_FILE"
 }
 
-function shell-clear() {
-    local command=$1
-    # debug-function clear $@
-
-    case $command in
+shell-clear() {
+    case $1 in
         cache)
             shell-clear-cache
             ;;

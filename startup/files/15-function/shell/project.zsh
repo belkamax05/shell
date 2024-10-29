@@ -1,4 +1,4 @@
-function shell-project() {
+shell-project() {
     _list() {
         if [ ${#projects_scripts_list[@]} -eq 0 ]; then
             echo-info "No projects scripts found"

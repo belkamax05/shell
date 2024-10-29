@@ -1,4 +1,4 @@
-function shell() {
+shell() {
     SHELL_IS_VERBOSE=false
     if [[ "$@" == *"--verbose"* || "$@" == *"--logs"* ]]; then
         SHELL_IS_VERBOSE=true

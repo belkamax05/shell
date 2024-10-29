@@ -1,10 +1,10 @@
 
-function shell-hard-exit() {
+shell-hard-exit() {
     s-run clear cache
     exit 0
 }
 
-function shell-soft-exit() {
+shell-soft-exit() {
     s-run clear cache
     exit 0
 }

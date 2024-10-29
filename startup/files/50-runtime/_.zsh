@@ -44,14 +44,17 @@ shell-runtime() {
 
     s-run not compiled && s-run pather init
 
-    s-run debugger env
     #!compile
     if s-run not compiled; then
         echo-info "Runtime finished"
         s-run build
+        s-run debugger env
+        s-run runtime-timer-stop
         s-run reload
+    else
+        s-run debugger env
+        s-run runtime-timer-stop
     fi
-    s-run runtime-timer-stop
     #!compile
     
     #!footer

@@ -1,4 +1,4 @@
-function shell-files() {
+shell-files() {
     _load() {
         local files_dir="$1"
         for file in $(find "$files_dir" -type f | sort); do

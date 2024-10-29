@@ -1,6 +1,4 @@
-
-
-function shell-nav() {
+shell-nav() {
     _list() {
         for key in "${(k)paths_alias_list[@]}"; do
             echo "$key: ${paths_alias_list[$key]}"

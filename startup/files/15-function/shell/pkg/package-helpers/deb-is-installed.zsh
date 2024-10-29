@@ -4,3 +4,5 @@ shell-deb-is-installed() {
     dpkg -l | grep -q $pkg_name && return $CODE_OK
     return $CODE_ERROR
 }
+
+dpkg-query -W -f='${Status}' warp 2>/dev/null | grep -q "install ok installed" && echo "Hi"

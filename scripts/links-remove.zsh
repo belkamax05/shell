@@ -1,1 +1,0 @@
-rm -rf $SHELL_LINKS_DIR

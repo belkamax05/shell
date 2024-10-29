@@ -13,7 +13,7 @@ shell-lib() {
     }
     _runLib() {
         _includeLib $1
-        shell-$1 ${@:2}
+        s-run $1 ${@:2}
         return $?
     }
 
