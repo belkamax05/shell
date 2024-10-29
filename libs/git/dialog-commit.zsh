@@ -11,7 +11,7 @@ shell-git-dialog-commit() {
     s-run git me
     echo-warning "Commit ${COLOR_ARGUMENT}$_stagedCount${STYLE_RESET} files with message ${COLOR_ARGUMENT}$_commitMessage${STYLE_RESET}"
     if gum confirm "Do you want to commit?"; then
-        s-run git fast-commit $_commitMessage
+        s-run git fast-commit $@
         s-run git me
     fi
     return $CODE_OK
