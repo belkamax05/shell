@@ -1,4 +1,4 @@
-shell-pkg-just-install() {
+s-pkg-just-install() {
     local installerName=""
     [[ "$@" == *"--brew"* ]] && installerName="brew"
     [[ "$@" == *"--deb"* ]] && installerName="deb"
@@ -6,22 +6,10 @@ shell-pkg-just-install() {
     [[ "$@" == *"--script-pkg"* ]] && installerName="script-pkg"
     [[ "$@" == *"--script"* ]] && installerName="script-pkg"
 
-    if s-run script-pkg-can-install $@; then
-        installerName="script-pkg"
-    fi
-    if s-run snap-can-install $@; then
-        installerName="snap"
-    fi
-    if s-run brew-can-install $@; then
-        installerName="brew"
-    fi
-    if s-run deb-can-install $@; then
-        installerName="deb"
-    fi
-    # s-run script-pkg-can-install "$@" && installerName="snap"
-    # s-run snap-can-install "$@" && installerName="snap"
-    # s-run brew-can-install "$@" && installerName="brew"
-    # s-run deb-can-install "$@" && installerName="deb"
+    s-run script-pkg-can-install "$@" && installerName="snap"
+    s-run snap-can-install "$@" && installerName="snap"
+    s-run brew-can-install "$@" && installerName="brew"
+    s-run deb-can-install "$@" && installerName="deb"
 
     if [[ -z $installerName ]]; then
         echo-error "No installer found for $@. ($installerName)"
@@ -33,24 +21,3 @@ shell-pkg-just-install() {
     fi
     s-run $installerName-just-install $@
 }
-
-# shell-pkg-can-install-how() {
-#     local installerName=""
-#     [[ "$@" == *"--brew"* ]] && installerName="brew" && echo "$installerName"; return
-#     [[ "$@" == *"--deb"* ]] && installerName="deb" && echo "$installerName"; return
-#     [[ "$@" == *"--snap"* ]] && installerName="snap" && echo "$installerName"; return
-#     [[ "$@" == *"--script-pkg"* ]] && installerName="script-pkg" && echo "$installerName"; return
-#     [[ "$@" == *"--script"* ]] && installerName="script-pkg" && echo "$installerName"; return
-#     s-run script-pkg-can-install "$@" && installerName="snap" && echo "$installerName"; return
-#     s-run snap-can-install "$@" && installerName="snap" && echo "$installerName"; return
-#     s-run brew-can-install "$@" && installerName="brew" && echo "$installerName"; return
-#     s-run deb-can-install "$@" && installerName="deb" && echo "$installerName"; return
-#     # echo "$installerName"
-# }
-# shell-pkg-can-install() {
-#     local _howCanInstall=$(shell-pkg-can-install-how $@)
-#     if [[ -z $_howCanInstall ]]; then
-#        return $CODE_ERROR
-#     fi
-#     return $CODE_OK
-# }

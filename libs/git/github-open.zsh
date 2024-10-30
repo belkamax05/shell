@@ -1,8 +1,8 @@
-shell-git-github-open() {
+s-git-github-open() {
     local file=$1
     local remote=${2:-origin}
-    local repoRoot=$(s-run git repo-root)
-    local branch=$(s-run git current-branch)
+    local repoRoot=$(s-git repo-root)
+    local branch=$(s-git current-branch)
 
     echo "file: $file"
     echo "remote: $remote"
@@ -37,6 +37,6 @@ shell-git-github-open() {
     echo $url
 }
 
-shell-git-gho() {
-    shell-git-github-open $@
+s-git-gho() {
+    s-git-github-open $@
 }

@@ -1,3 +1,3 @@
-shell-git-stage-all() {
+s-git-stage-all() {
     git add -A
 }

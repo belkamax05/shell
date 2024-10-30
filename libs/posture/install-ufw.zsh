@@ -1,4 +1,4 @@
-shell-posture-install-ufw() {
+s-posture-install-ufw() {
     #? Install UFW: During installation, make sure to install ufw. On most Ubuntu or Debian-based distributions, it's installed by default, but you can ensure it by running:
     sudo apt install ufw
 

@@ -1,4 +1,4 @@
-shell-not() {
+s-not() {
     if s-is $@; then
         return $CODE_ERROR
     else

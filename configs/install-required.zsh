@@ -7,9 +7,9 @@ s-is linux && _installPackages="$_installPackages fd-find snapd"
 packages_array=(${=_installPackages})
 for package in "${packages_array[@]}"; do
     s-install $package
-    if [[ $package == "nvm" ]]; then
-        s-run plugin-nvm-init
-    fi
+    # if [[ $package == "nvm" ]]; then
+    #     s-run plugin-nvm-init
+    # fi
     if [[ $package == "zap" ]]; then
         s-run plugin-zap-init
     fi

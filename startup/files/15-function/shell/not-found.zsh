@@ -1,9 +1,9 @@
-shell-not-found() {
+s-not-found() {
     _errorNF() {
         echo-error "${COLOR_COMMAND}not-found${STYLE_RESET}" $@
     }
     if [[ $SHELL_IS_PROJECT -eq 1 ]]; then
-        s-run project $@
+        s-project $@
         local _status=$?
         if [[ $_status -eq $CODE_OK ]]; then
             return $CODE_OK

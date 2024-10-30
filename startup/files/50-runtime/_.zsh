@@ -5,11 +5,11 @@ shell-runtime() {
     tracing "runtime start 2"
     s-run env init
     tracing "runtime start 3"
-    s-run user load
+    s-user load
     #!header
     tracing "runtime header done"
     #? system
-    if s-run not compiled; then
+    if s-not compiled; then
         tracing "installing started"
         echo-info "Runtime started"
         s-run runtime-create-folders
@@ -68,21 +68,21 @@ shell-runtime() {
     fi
     tracing "on-shell-runtime done"
 
-    s-run not compiled && s-pather init
+    s-not compiled && s-pather init
 
     tracing "paths done"
 
     #!compile
-    if s-run not compiled; then
+    if s-not compiled; then
         tracing "compiling..."
         echo-info "Runtime finished"
         s-run build
-        s-run debugger env
+        s-debugger env
         s-run runtime-timer-stop
         s-run reload
     else
         tracing "skipping compilation..."
-        s-run debugger env
+        s-debugger env
         s-run runtime-timer-stop
     fi
     #!compile

@@ -1,16 +1,16 @@
-shell-debugger() {
+s-debugger() {
     _debuggerEnable() {
-        s-run user set SHELL_IS_DEBUGGER true
+        s-user set SHELL_IS_DEBUGGER true
         SHELL_IS_DEBUGGER=true
     }
     _debuggerDisable() {
-        s-run user set SHELL_IS_DEBUGGER false
+        s-user set SHELL_IS_DEBUGGER false
         SHELL_IS_DEBUGGER=false
     }
     _debuggerEnv() {
-        s-run not compiled && debug-info "Shell compiling..."
+        s-not compiled && debug-info "Shell compiling..."
         s-is compiled && debug-success "Shell compiled!"
-        s-run not started && debug-info "Shell starting..."
+        s-not started && debug-info "Shell starting..."
         s-is started && debug-success "Shell started!"
         return $CODE_OK
     }

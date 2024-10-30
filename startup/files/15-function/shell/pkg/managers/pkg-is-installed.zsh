@@ -1,4 +1,4 @@
-shell-pkg-is-installed() {
+s-pkg-is-installed() {
     if [[ "$@" == *"--brew"* ]]; then
         s-run brew-is-installed $@
         return $?

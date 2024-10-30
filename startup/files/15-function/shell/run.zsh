@@ -14,7 +14,16 @@ shell-run() {
 
         # fi
         return $_status
+    fi
+     #? run via 's-$command'
+    if [ -n "$(declare -f s-$command)" ]; then
+        s-$command ${@:2}
+        local _status=$?
+        # if [ $_status -ne $CODE_OK ] && [ $_status -ne $CODE_NOT_FOUND ]; then
+        #     # echo-error "'${COLOR_ARGUMENT}shell $command${STYLE_RESET}' failed. Status: $_status"
 
+        # fi
+        return $_status
     fi
 
     #? run via '$command'

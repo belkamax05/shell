@@ -1,4 +1,4 @@
-shell-pkg-how() {
+s-pkg-how() {
     local pkg_name=$1
     local installed_pkg_managers=""
     local stop_at_first=false

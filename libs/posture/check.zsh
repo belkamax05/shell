@@ -1,4 +1,4 @@
-shell-posture-check() {
+s-posture-check() {
   # Check if UFW is active
   ufw_status=$(sudo ufw status | grep "Status: active")
   if [ -n "$ufw_status" ]; then

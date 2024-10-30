@@ -1,4 +1,4 @@
-shell-posture-install-firewalld() {
+s-posture-install-firewalld() {
     #? Installing and Using firewalld 
     sudo apt install firewalld
     sudo systemctl enable firewalld

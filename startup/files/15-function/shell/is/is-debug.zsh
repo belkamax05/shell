@@ -1,4 +1,4 @@
-shell-is-debugger() {
+s-is-debug() {
     if [[ $SHELL_IS_DEBUGGER == true ]]; then
         return $CODE_OK
     else

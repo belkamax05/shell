@@ -3,7 +3,10 @@ shell-plugin-nvm-init() {
     # source "$HOME/.nvm/nvm.sh"
     tracing "nvm 0"
     local start_time=$(date +%s)
-    # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    if [ -z "$NVM_LOADED" ]; then
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+        export NVM_LOADED=true
+    fi
     local end_time=$(date +%s)
     echo "nvm.sh load time: $((end_time - start_time)) seconds"
 

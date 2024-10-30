@@ -1,4 +1,4 @@
-shell-is-started() {
+s-is-started() {
     if [[ $SHELL_IS_STARTED == true ]]; then
         return $CODE_OK
     else

@@ -1,4 +1,4 @@
-shell-posture-install-luks() {
+s-posture-install-luks() {
     #? Configure Automatic Security Updates: Set up automatic updates for security patches:
     sudo dpkg-reconfigure --priority=low unattended-upgrades
 

@@ -1,3 +1,3 @@
-shell-posture-disable-ufw() {
+s-posture-disable-ufw() {
     sudo ufw disable
 }

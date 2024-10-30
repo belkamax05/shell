@@ -1,4 +1,4 @@
-shell-pkg-remove() {
+s-pkg-remove() {
     howInstalled=""
     if s-run pkg-is-installed $@; then
         howInstalled=$(s-run pkg-how $@ --first)

@@ -1,4 +1,4 @@
-shell-user() {
+s-user() {
     local userConfigFile="$SHELL_SHARED_DIR/.user-config"
     _userGet() {
         s-run config-file get $userConfigFile $@
@@ -23,7 +23,7 @@ shell-user() {
             _userLoad
             ;;
         *)
-            echo "Invalid '${COLOR_YELLOW}shell-user${STYLE_RESET}' command '${COLOR_YELLOW}$1${STYLE_RESET}'."
+            echo "Invalid '${COLOR_YELLOW}s-user${STYLE_RESET}' command '${COLOR_YELLOW}$1${STYLE_RESET}'."
             ;;
     esac
 }

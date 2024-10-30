@@ -1,3 +1,3 @@
-shell-is-linux() {
+s-is-linux() {
     [[ "$SHELL_UNAME" == "Linux" ]]
 }

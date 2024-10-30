@@ -32,19 +32,19 @@ verbose-warning() {
 }
 
 compiling-echo() {
-    s-run not compiled && echo "$@"
+    s-not compiled && echo "$@"
 }
 compiling-error() {
-    s-run not compiled && echo-error "$@"
+    s-not compiled && echo-error "$@"
 }
 compiling-success() {
-    s-run not compiled && echo-success "$@"
+    s-not compiled && echo-success "$@"
 }
 compiling-info() {
-    s-run not compiled && echo-info "$@"
+    s-not compiled && echo-info "$@"
 }
 compiling-warning() {
-    s-run not compiled && echo-warning "$@"
+    s-not compiled && echo-warning "$@"
 }
 
 

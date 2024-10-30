@@ -1,4 +1,4 @@
-shell-is-compiled() {
+s-is-compiled() {
     if [[ $SHELL_IS_COMPILED == true ]]; then
         return $CODE_OK
     else

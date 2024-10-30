@@ -1,3 +1,3 @@
-shell-is-darwin() {
+s-is-darwin() {
     [[ "$SHELL_UNAME" == "Darwin" ]]
 }
