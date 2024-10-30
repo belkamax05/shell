@@ -30,7 +30,7 @@ SHELL_LIBS_DIST_DIR="$SHELL_CACHE_DIR/libs"
 
 
 #? nvm
-NVM_DIR=$SHELL_PLUGINS_DIR/nvm
+export NVM_DIR="$HOME/.nvm"
 
 #? zap
 ZAP_DIR="$SHARED_DIR/zap"
@@ -45,3 +45,7 @@ CURRENT_FILE_PATH="${(%):-%x}"
 export PATH="$MVN_DIR/bin:$PATH"
 export PATH="/home/.linuxbrew/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$SHELL_BIN_DIR:$PATH"
+
+# Warning: /opt/homebrew/bin is not in your PATH.

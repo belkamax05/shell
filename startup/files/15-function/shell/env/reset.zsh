@@ -9,6 +9,7 @@ shell-env-reset() {
     SHELL_INSTALL_OPTIONAL=false #? installs optional packages
     SHELL_INSTALL_REQUIRED=true #? installs required packages
     SHELL_IS_COMPILED=false
+    SHELL_SKIP_INSTALL=false #? prevents all install cases
 
     SHELL_IS_BACK_PROCESSING=0
     SHELL_IS_STARTED=false

@@ -1,3 +1,5 @@
 #!/bin/zsh
-source $HOME/.zshrc
-s-run $@
+if [ -z "$(command -v shell)" ]; then
+    source $HOME/.zshrc
+    s-run $@
+fi

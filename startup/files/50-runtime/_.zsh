@@ -10,12 +10,12 @@ shell-runtime() {
         echo-info "Runtime started"
         s-run runtime-create-folders
         s-run plugin-init
-        [[ $SHELL_INSTALL_REQUIRED == true ]] && source "$SHELL_CONFIGS_DIR/install-required.zsh"
-        [[ $SHELL_INSTALL_OPTIONAL == true ]] && source "$SHELL_CONFIGS_DIR/install-optional.zsh"
-        s-run linker dotfiles
-        s-run linker bin
-        s-run linker configs
-        s-run runtime-apply-tweaks
+        [[ $SHELL_SKIP_INSTALL != true && $SHELL_INSTALL_REQUIRED == true ]] && source "$SHELL_CONFIGS_DIR/install-required.zsh"
+        [[ $SHELL_SKIP_INSTALL != true && $SHELL_INSTALL_OPTIONAL == true ]] && source "$SHELL_CONFIGS_DIR/install-optional.zsh"
+        [[ $SHELL_SKIP_INSTALL != true ]] && s-run linker dotfiles
+        [[ $SHELL_SKIP_INSTALL != true ]] && s-run linker bin
+        [[ $SHELL_SKIP_INSTALL != true ]] && s-run linker configs
+        [[ $SHELL_SKIP_INSTALL != true ]] && s-run runtime-apply-tweaks
     else
         s-run plugin-init
     fi
