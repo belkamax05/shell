@@ -1,3 +1,3 @@
 function chpwd() {
-  s-run pather update
+  s-pather update
 }

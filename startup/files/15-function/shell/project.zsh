@@ -10,7 +10,7 @@ shell-project() {
     }
     _add() {
         local pathOrAlias=$1
-        local pathResolved=$(s-run pather get $pathOrAlias)
+        local pathResolved=$(s-pather get $pathOrAlias)
         local scriptName=$2
         projects_scripts_list[$pathResolved]=$scriptName
     }
