@@ -1,4 +1,4 @@
-shell-is() {
+s-is() {
     case $1 in
         verbose) s-run is-verbose ;;
         linux) s-run is-linux ;;

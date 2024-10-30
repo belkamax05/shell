@@ -4,9 +4,6 @@ echo-error() {
 echo-success() {
     echo "$SHELL_PREFFIX_SUCCESS $@"
 }
-echo-debug() {
-    echo "$SHELL_PREFFIX_DEBUG $@"
-}
 echo-info() {
     echo "$SHELL_PREFFIX_INFO  $@"
     #? extra space added due tu issue with emoji width
@@ -16,22 +13,22 @@ echo-warning() {
 }
 
 verbose-echo() {
-    s-run is verbose && echo "$@"
+    s-is verbose && echo "$@"
 }
 verbose-error() {
-    s-run is verbose && echo-error "$@"
+    s-is verbose && echo-error "$@"
 }
 verbose-success() {
-    s-run is verbose && echo-success "$@"
+    s-is verbose && echo-success "$@"
 }
 verbose-debug() {
-    s-run is verbose && echo-debug "$@"
+    s-is verbose && echo-debug "$@"
 }
 verbose-info() {
-    s-run is verbose && echo-info "$@"
+    s-is verbose && echo-info "$@"
 }
 verbose-warning() {
-    s-run is verbose && echo-warning "$@"
+    s-is verbose && echo-warning "$@"
 }
 
 compiling-echo() {
@@ -43,9 +40,6 @@ compiling-error() {
 compiling-success() {
     s-run not compiled && echo-success "$@"
 }
-compiling-debug() {
-    s-run not compiled && echo-debug "$@"
-}
 compiling-info() {
     s-run not compiled && echo-info "$@"
 }
@@ -54,19 +48,27 @@ compiling-warning() {
 }
 
 
-
 debug() {
-    s-run is debug && echo-debug "$@"
-}
-debug-command() {
-    debug "${COLOR_COMMAND}[$1]${STYLE_RESET}: ${@:2}"
+    s-is debug && echo "DEBUG: $@"
 }
 debug-error() {
-    s-run is debug && echo-error "DEBUG: $@"
+    s-is debug && echo-error "DEBUG: $@"
 }
 debug-info() {
-    s-run is debug && echo-info "DEBUG: $@"
+    s-is debug && echo-info "DEBUG: $@"
 }
 debug-success() {
-    s-run is debug && echo-success "DEBUG: $@"
+    s-is debug && echo-success "DEBUG: $@"
+}
+debug-warning() {
+    s-is debug && echo-warning "DEBUG: $@"
+}
+tracing() {
+    s-is linux && TRACE_END_TIME=$(date +%s.%N)
+    s-is darwin && TRACE_END_TIME=$(date +%s)
+
+    TRACE_DIFF=$((TRACE_END_TIME - STARTUP_START_TIME))
+    TRACE_DIFF_ROUNDED="$(echo $TRACE_DIFF | cut -c1-5)"
+
+    [[ $SHELL_IS_TRACING == true ]] && echo "TRACE: $@ ${COLOR_ARGUMENT}$TRACE_DIFF_ROUNDED${STYLE_RESET} seconds"
 }

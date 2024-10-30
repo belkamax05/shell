@@ -4,7 +4,7 @@ shell-runtime-apply-tweaks() {
         s-run tweak apply $tweak
     done
     #? linux only tweaks
-    if s-run is linux; then
+    if s-is linux; then
         for tweak in default-zsh gnome-no-logout-prompt dark-theme; do
             s-run tweak apply $tweak
         done

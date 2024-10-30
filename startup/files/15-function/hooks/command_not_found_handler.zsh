@@ -1,6 +1,6 @@
 function command_not_found_handler {
     local command="$1"
-    if s-run is compiled; then
+    if s-is compiled; then
         shell-not-found $@
         local _status=$?
         return $_status

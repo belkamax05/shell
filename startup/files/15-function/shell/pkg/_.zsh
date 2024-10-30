@@ -1,4 +1,4 @@
-shell-pkg() {
+s-pkg() {
     case $1 in
         is-installed)
             s-run pkg-is-installed ${@:2};
@@ -18,15 +18,15 @@ shell-pkg() {
             ;;
     esac
 }
-shell-install() {
+s-install() {
     s-run pkg install $@
 }
-shell-remove() {
+s-remove() {
     s-run pkg remove $@
 }
-shell-just-install() {
+s-just-install() {
     s-run pkg just-install $@
 }
-shell-is-installed() {
+s-is-installed() {
     s-run pkg is-installed $@
 }

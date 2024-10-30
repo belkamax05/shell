@@ -11,8 +11,8 @@ shell-runtime-fzf-configure() {
     # # To apply the command to CTRL-T as well
     # export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-    s-run is linux && DEFAULT_FILE_FINDER=fdfind
-    s-run is darwin && DEFAULT_FILE_FINDER=fd
+    s-is linux && DEFAULT_FILE_FINDER=fdfind
+    s-is darwin && DEFAULT_FILE_FINDER=fd
 
     #? Variables
 

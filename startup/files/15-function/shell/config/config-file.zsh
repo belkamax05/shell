@@ -18,9 +18,9 @@ shell-config-file() {
         touch "$configFile"
         # Check if the variable already exists in the file
         if grep -q "^$variableName=" "$configFile"; then
-            if s-run is linux; then
+            if s-is linux; then
                 sed -i "s/^$variableName=.*/$variableName=$variableValue/" "$configFile"
-            elif s-run is darwin; then
+            elif s-is darwin; then
                 sed -i '' "s/^$variableName=.*/$variableName=$variableValue/" "$configFile"
             fi
         else

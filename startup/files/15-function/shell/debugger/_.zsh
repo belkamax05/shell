@@ -9,9 +9,9 @@ shell-debugger() {
     }
     _debuggerEnv() {
         s-run not compiled && debug-info "Shell compiling..."
-        s-run is compiled && debug-success "Shell compiled!"
+        s-is compiled && debug-success "Shell compiled!"
         s-run not started && debug-info "Shell starting..."
-        s-run is started && debug-success "Shell started!"
+        s-is started && debug-success "Shell started!"
         return $CODE_OK
     }
     case $1 in
