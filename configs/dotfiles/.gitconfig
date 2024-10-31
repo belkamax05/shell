@@ -91,5 +91,5 @@ df="!git deleted-files"
 dfc="!git deleted-files-count"
 gho="!git github-open"
 #! profile
-vml = "!zsh -c 'shell git set-email maksym.bondarchuk@vml.com'"
-personal = "!zsh -c 'shell git set-email belkamax05@gmail.com'"
+vml = "!git z set-email maksym.bondarchuk@vml.com"
+personal = "!git z set-email belkamax05@gmail.com"

@@ -1,5 +1,5 @@
 #!/bin/zsh
-if [ -z "$(command -v shell)" ]; then
-    source $HOME/.zshrc
-    s-run $@
-fi
+SHELL_ENTRY_FILE="${(%):-%x}"
+SHELL_DIR=$(dirname $(dirname $(dirname $SHELL_ENTRY_FILE)))
+SHELL_BIN_ARGS=$@
+exec zsh -c "source '$SHELL_DIR/.zshrc' && s-run $SHELL_BIN_ARGS"

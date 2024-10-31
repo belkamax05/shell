@@ -15,11 +15,11 @@ s-pather() {
         s-run project pwd-check
     }
     _init() { #? every time shell is preparing to run at folder
-        compiling-info "You are currently at $(pwd)"
+        compiling info "You are currently at $(pwd)"
         _dir_change
     }
     _update() { #? shell foldder changes
-        verbose-info "You switched to $(pwd)"
+        verbose info "You switched to $(pwd)"
         _dir_change
         if [ $SHELL_IS_BACK_PROCESSING -eq 0 ]; then
             shell_navigation_list[$#shell_navigation_list+1]=$PWD

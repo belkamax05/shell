@@ -3,9 +3,8 @@ shell-env-reset() {
     DEBUG_INSTALL=1          #? shows message "[install]: X"
     DEBUG_FUNCTION=1         #? shows message "[<function>]: X"
 
-    SHELL_IS_DEBUGGER=false
+    SHELL_IS_DEBUG=false
     SHELL_FORCE_VERBOSE=false #? forces verbose mode
-    SHELL_PREVENT_INSTALL=false #? prevents installation of packages
     SHELL_INSTALL_OPTIONAL=false #? installs optional packages
     SHELL_INSTALL_REQUIRED=true #? installs required packages
     SHELL_IS_COMPILED=false

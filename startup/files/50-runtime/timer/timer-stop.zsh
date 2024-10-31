@@ -9,5 +9,5 @@ shell-runtime-timer-stop() {
     else
         modeText="interpreted"
     fi
-    debug-success "Shell ${COLOR_CYAN}$modeText${STYLE_RESET} time is ${COLOR_ARGUMENT}$STARTUP_DIFF_TIME_ROUNDED${STYLE_RESET} seconds"
+    debug success "Shell ${COLOR_CYAN}$modeText${STYLE_RESET} time is ${COLOR_ARGUMENT}$STARTUP_DIFF_TIME_ROUNDED${STYLE_RESET} seconds"
 }

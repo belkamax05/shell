@@ -1,17 +1,13 @@
 s-debugger() {
-    _debuggerEnable() {
-        s-user set SHELL_IS_DEBUGGER true
-        SHELL_IS_DEBUGGER=true
-    }
-    _debuggerDisable() {
-        s-user set SHELL_IS_DEBUGGER false
-        SHELL_IS_DEBUGGER=false
+    _debuggerSet() {
+        s-user set SHELL_DEBUGGER $1
+        SHELL_DEBUGGER=$1
     }
     _debuggerEnv() {
-        s-not compiled && debug-info "Shell compiling..."
-        s-is compiled && debug-success "Shell compiled!"
-        s-not started && debug-info "Shell starting..."
-        s-is started && debug-success "Shell started!"
+        s-not compiled && debug info "Shell compiling..."
+        s-is compiled && debug success "Shell compiled!"
+        s-not started && debug info "Shell starting..."
+        s-is started && debug success "Shell started!"
         return $CODE_OK
     }
     case $1 in
@@ -19,10 +15,10 @@ s-debugger() {
             _debuggerEnv
             ;;
         enable)
-            _debuggerEnable
+            _debuggerSet true
             ;;
         disable)
-            _debuggerDisable
+            _debuggerSet false
             ;;
         *)
             echo-error "!!! Unknown debugger command: $1"

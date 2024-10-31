@@ -18,7 +18,7 @@ shell-project() {
         SHELL_IS_PROJECT=0
         local scriptName=${projects_scripts_list[$PWD]}
         if [ -n "$scriptName" ]; then
-            # debug-success "Script for project: $scriptName"
+            # debug success "Script for project: $scriptName"
             SHELL_IS_PROJECT=1
             return $CODE_OK
         fi

@@ -1,74 +1,80 @@
+echo-fn() {
+    local preffix="$SHELL_PREFFIX"
+    local command=$1
+    local args=(${@:2})
+    if [[ $command == "error" ]]; then
+        preffix="$SHELL_PREFFIX_ERROR"
+    elif [[ $command == "success" ]]; then
+        preffix="$SHELL_PREFFIX_SUCCESS"
+    elif [[ $command == "info" ]]; then
+        preffix="$SHELL_PREFFIX_INFO"
+    elif [[ $command == "warning" ]]; then
+        preffix="$SHELL_PREFFIX_WARNING"
+    else
+        args=($@)
+    fi
+    echo "$preffix ${args[@]}"
+}
 echo-error() {
-    echo "$SHELL_PREFFIX_ERROR $@"
+    echo-fn error "$@"
 }
 echo-success() {
-    echo "$SHELL_PREFFIX_SUCCESS $@"
+    echo-fn success "$@"
 }
 echo-info() {
-    echo "$SHELL_PREFFIX_INFO  $@"
+    echo-fn info " $@"
     #? extra space added due tu issue with emoji width
 }
 echo-warning() {
-    echo "$SHELL_PREFFIX_WARNING $@"
+    echo-fn warning "$@"
 }
 
-verbose-echo() {
-    s-is verbose && echo "$@"
-}
-verbose-error() {
-    s-is verbose && echo-error "$@"
-}
-verbose-success() {
-    s-is verbose && echo-success "$@"
-}
-verbose-debug() {
-    s-is verbose && echo-debug "$@"
-}
-verbose-info() {
-    s-is verbose && echo-info "$@"
-}
-verbose-warning() {
-    s-is verbose && echo-warning "$@"
+is-echo-command() {
+    local command=$1
+    if [[ $command == "error" || $command == "success" || $command == "info" || $command == "warning" ]]; then
+        return $CODE_OK
+    fi
+    return $CODE_ERROR
 }
 
-compiling-echo() {
-    s-not compiled && echo "$@"
-}
-compiling-error() {
-    s-not compiled && echo-error "$@"
-}
-compiling-success() {
-    s-not compiled && echo-success "$@"
-}
-compiling-info() {
-    s-not compiled && echo-info "$@"
-}
-compiling-warning() {
-    s-not compiled && echo-warning "$@"
+verbose() {
+    s-not verbose && return $CODE_OK
+    local command=$1
+    if is-echo-command $command; then
+        echo-fn $command "${COLOR_CYAN}[[VERBOSE]]${STYLE_RESET} ${@:2}"
+    else
+        echo-fn "${COLOR_CYAN}[[VERBOSE]]${STYLE_RESET} $@"
+    fi
 }
 
+compiling() {
+    s-not compiled && return $CODE_OK
+    local command=$1
+    if is-echo-command $command; then
+        echo-fn $command "${COLOR_YELLOW}[[COMPILING]]${STYLE_RESET} ${@:2}"
+    else
+        echo-fn "${COLOR_YELLOW}[[COMPILING]]${STYLE_RESET} $@"
+    fi
+}
 
 debug() {
-    s-is debug && echo "DEBUG: $@"
+    s-not debug && return $CODE_OK
+    local command=$1
+    if is-echo-command $command; then
+        echo-fn $command "${COLOR_MAGENTA}[[DEBUG]]${STYLE_RESET} ${@:2}"
+    else
+        echo-fn "${COLOR_MAGENTA}[[DEBUG]]${STYLE_RESET} $@"
+    fi
 }
-debug-error() {
-    s-is debug && echo-error "DEBUG: $@"
-}
-debug-info() {
-    s-is debug && echo-info "DEBUG: $@"
-}
-debug-success() {
-    s-is debug && echo-success "DEBUG: $@"
-}
-debug-warning() {
-    s-is debug && echo-warning "DEBUG: $@"
-}
+
 tracing() {
+    s-not tracing && return $CODE_OK
+
     s-is linux && TRACE_END_TIME=$(date +%s.%N)
     s-is darwin && TRACE_END_TIME=$(date +%s)
 
     TRACE_DIFF=$((TRACE_END_TIME - STARTUP_START_TIME))
     TRACE_DIFF_ROUNDED="$(echo $TRACE_DIFF | cut -c1-5)"
 
-    [[ $SHELL_IS_TRACING == true ]] && echo "TRACE: $@ ${COLOR_ARGUMENT}$TRACE_DIFF_ROUNDED${STYLE_RESET} seconds"
+    echo-fn "${COLOR_MAGENTA}[[TRACING]]${STYLE_RESET} $@ ${COLOR_ARGUMENT}$TRACE_DIFF_ROUNDED${STYLE_RESET} seconds"
 }

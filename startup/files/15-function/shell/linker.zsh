@@ -8,8 +8,9 @@ shell-linker() {
     }
 
     _linkerBin() {
-        echo-info "Creating bin linking..."
-        sudo ln -sf "$SHELL_BIN_DIR/shell" "/usr/local/bin/shell_x"
+        debug warning "TODO remove linker bin"
+        # echo-info "Creating bin linking..."
+        # sudo ln -sf "$SHELL_BIN_DIR/shell" "/usr/local/bin/shell_x"
     }
 
     _linkerConfigs() {

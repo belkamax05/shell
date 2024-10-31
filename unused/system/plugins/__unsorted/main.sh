@@ -2,7 +2,6 @@
 # import "plugins/fzf/_"
 
 #? zgen manager - https://github.com/tarjoilija/zgen
-debug-echo-info "zgen loading..."
 import "plugins/zgen/_"
 
 #? zgen plugins
@@ -25,7 +24,6 @@ plug "zsh-users/zsh-syntax-highlighting" #? https://github.com/zsh-users/zsh-syn
 # zinit light g-plane/zsh-yarn-autocompletions
 
 #? zplug plugins
-debug-echo-info "zplug loading..."
 source ~/.zplug/init.zsh
 
 # zplug "g-plane/zsh-yarn-autocompletions", hook-build:"./zplug.zsh", defer:2

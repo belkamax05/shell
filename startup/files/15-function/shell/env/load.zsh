@@ -3,7 +3,7 @@ shell-env-load() {
     if [[ -f $runtimeConfigsFile ]]; then
         source $runtimeConfigsFile
     else
-        compiling-warning "No runtime configs found at $runtimeConfigsFile"
+        compiling warning "No runtime configs found at $runtimeConfigsFile"
     fi
 
     SHELL_IS_COMPILED=false

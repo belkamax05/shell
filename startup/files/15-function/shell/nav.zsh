@@ -26,7 +26,7 @@ shell-nav() {
     }
     _run() {
         local navPath=$1
-        verbose-info "Navigate to ${COLOR_ARGUMENT}$navPath${STYLE_RESET}. Args: $@"
+        verbose info "Navigate to ${COLOR_ARGUMENT}$navPath${STYLE_RESET}. Args: $@"
         if [ $navPath = "back" ]; then
             s-pather back $@
             return $?
