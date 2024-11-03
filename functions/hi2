@@ -1,0 +1,6 @@
+#!/usr/bin/python3
+
+def hi2():
+    print("Hi2")
+
+hi2()

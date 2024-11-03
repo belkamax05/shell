@@ -3,18 +3,18 @@
 
 s-lib() {
     _compileLib() {
+        debug info "s-lib compile $1"
         s-run files build $SHELL_LIBS_SRC_DIR/$1 $SHELL_LIBS_DIST_DIR/$1.zsh
     }
     _includeLib() {
-        debug warning "Include lib $1"
         if [ ! -f $SHELL_LIBS_DIST_DIR/$1.zsh ]; then
             _compileLib $1
         fi
+        debug info "s-lib include $1"
         source $SHELL_LIBS_DIST_DIR/$1.zsh
     }
     _runLib() {
         _includeLib $1
-        echo "Will run lib with $@"
         s-run $1 ${@:2}
         return $?
     }

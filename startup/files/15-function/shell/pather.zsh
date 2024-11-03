@@ -17,6 +17,7 @@ s-pather() {
     _init() { #? every time shell is preparing to run at folder
         compiling info "You are currently at $(pwd)"
         _dir_change
+        # load-nvmrc
     }
     _update() { #? shell foldder changes
         verbose info "You switched to $(pwd)"

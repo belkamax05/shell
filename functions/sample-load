@@ -1,0 +1,3 @@
+sample-load() {
+    echo "Hello from Sample load"
+}

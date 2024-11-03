@@ -1,0 +1,16 @@
+if [[ $(command -v nvm) == "nvm" ]]; then
+    debug info "Loading ${COLOR_SUCCESS}nvm${STYLE_RESET}"
+    export NVM_AUTO_USE=true
+    source $(brew --prefix nvm)/nvm.sh
+fi
+nvm() {
+    debug info "Lazy loading ${COLOR_ARGUMENT}nvm${STYLE_RESET}"
+    export NVM_AUTO_USE=true
+    ZSH_NVM_DIR="$HOME/dev/.zsh-nvm"
+    if [ ! -d "$ZSH_NVM_DIR" ]; then
+        git clone https://github.com/lukechilds/zsh-nvm.git "$ZSH_NVM_DIR"
+    fi
+    unset -f nvm
+    source "$ZSH_NVM_DIR/zsh-nvm.plugin.zsh"
+    nvm $@
+}

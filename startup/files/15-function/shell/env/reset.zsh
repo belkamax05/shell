@@ -5,8 +5,8 @@ shell-env-reset() {
 
     SHELL_IS_DEBUG=false
     SHELL_FORCE_VERBOSE=false #? forces verbose mode
-    SHELL_INSTALL_OPTIONAL=false #? installs optional packages
-    SHELL_INSTALL_REQUIRED=true #? installs required packages
+    # SHELL_INSTALL_OPTIONAL=false #? installs optional packages
+    # SHELL_INSTALL_REQUIRED=true #? installs required packages
     SHELL_IS_COMPILED=false
     SHELL_SKIP_INSTALL=false #? prevents all install cases
 

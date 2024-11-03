@@ -1,5 +1,3 @@
-SHELL_DATA_DIR="$SHELL_DIR/data"
-
 SHELL_CONFIGS_DIR="$SHELL_DIR/configs"
 SHELL_DOTFILES_DIR="$SHELL_CONFIGS_DIR/dotfiles"
 SHELL_BIN_DIR="$SHELL_CONFIGS_DIR/bin"
@@ -30,7 +28,7 @@ SHELL_LIBS_DIST_DIR="$SHELL_CACHE_DIR/libs"
 
 
 #? nvm
-export NVM_DIR="$HOME/.nvm"
+# export NVM_DIR="$HOME/.nvm"
 
 #? zap
 ZAP_DIR="$SHARED_DIR/zap"

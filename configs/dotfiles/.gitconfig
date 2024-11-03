@@ -1,6 +1,7 @@
 [core]
 excludesfile = /Users/maksym.bondarchuk/.gitignore_global
 editor = vim
+	hooksPath = /home/belkamax05/shell/hooks
 [difftool "sourcetree"]
 cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 path =
@@ -42,7 +43,8 @@ swc = switch -c
 ; qpsn = "!f() { git stage-modified; git quick-push \"$1\"; }; f"
 
 #! commands
-z = "!zsh -c 'shell git $0 $@'"
+z = "!zsh -c 'source ~/.zshrc && s-run git $0 $@'" #source ~/.zshrc s  $0 $@
+# hi1 = "!zsh -c 'source ~/.zshrc && hi1'"
 #! commands
 merge-squash-reset = "!git z merge-squash-reset"
 fast-commit = "!git z fast-commit"

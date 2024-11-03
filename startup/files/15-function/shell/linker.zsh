@@ -34,6 +34,11 @@ shell-linker() {
         bin)
             _linkerBin
             ;;
+        all)
+            _linkerDotfiles
+            _linkerConfigs
+            _linkerBin
+            ;;
         *)
             echo-error "Unknown linker type: $1"
             ;;

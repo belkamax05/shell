@@ -1,6 +1,7 @@
-shell-runtime-completions() {
-    # autoload -Uz compinit
-    # compinit
+s-runtime-completions() {
+    tracing "Load runtime completions"
+    autoload -Uz compinit
+    compinit
 
     # compdef _shell shell
     # compdef _nav shell nav

@@ -1,4 +1,5 @@
 shell-runtime-keybindings() {
+    tracing "Load keybindings"
     # bindkey -s '^b' 'echo Hello here^M'
 
     # function get_bindkey_value() {
@@ -31,4 +32,9 @@ shell-runtime-keybindings() {
     # bindkey -s '^y^s^p' 'yarn start --prod^M'
     # bindkey -s '^y^s' 'yarn start^M'
     # bindkey -s '^m' 'yarn mock^M'
+
+
+# bindkey '^R' history-incremental-search-backward
+# bindkey '^S' history-incremental-search-forward
+
 }

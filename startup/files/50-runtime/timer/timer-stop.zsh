@@ -7,7 +7,7 @@ shell-runtime-timer-stop() {
     if s-is compiled; then
         modeText="compiled"
     else
-        modeText="interpreted"
+        modeText="sourced"
     fi
     debug success "Shell ${COLOR_CYAN}$modeText${STYLE_RESET} time is ${COLOR_ARGUMENT}$STARTUP_DIFF_TIME_ROUNDED${STYLE_RESET} seconds"
 }

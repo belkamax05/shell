@@ -1,0 +1,6 @@
+#!/bin/zsh
+# ghello() {
+#   echo "Hello, $1"
+# }
+
+# alias git-ghello=ghello

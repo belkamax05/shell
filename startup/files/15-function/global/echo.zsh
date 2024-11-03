@@ -22,8 +22,7 @@ echo-success() {
     echo-fn success "$@"
 }
 echo-info() {
-    echo-fn info " $@"
-    #? extra space added due tu issue with emoji width
+    echo-fn info "$@"
 }
 echo-warning() {
     echo-fn warning "$@"
@@ -76,5 +75,5 @@ tracing() {
     TRACE_DIFF=$((TRACE_END_TIME - STARTUP_START_TIME))
     TRACE_DIFF_ROUNDED="$(echo $TRACE_DIFF | cut -c1-5)"
 
-    echo-fn "${COLOR_MAGENTA}[[TRACING]]${STYLE_RESET} $@ ${COLOR_ARGUMENT}$TRACE_DIFF_ROUNDED${STYLE_RESET} seconds"
+    echo "${COLOR_WHITE}$TRACE_DIFF_ROUNDED ${STYLE_RESET} $@"
 }

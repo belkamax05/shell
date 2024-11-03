@@ -1,4 +1,4 @@
-shell-runtime() {
+s-runtime() {
     #!header
     tracing "runtime start 1"
     s-run runtime-timer-start
@@ -8,30 +8,16 @@ shell-runtime() {
     s-user load
     #!header
     tracing "runtime header done"
+    s-run runtime-autoload
     #? system
     if s-not compiled; then
-        tracing "installing started"
-        echo-info "Runtime started"
         s-run runtime-create-folders
-        tracing "plugins init"
         s-run plugin-init
-        tracing "plugins init done"
-        [[ $SHELL_SKIP_INSTALL != true && $SHELL_INSTALL_REQUIRED == true ]] && source "$SHELL_CONFIGS_DIR/install-required.zsh"
-        tracing "plugin 1"
-        [[ $SHELL_SKIP_INSTALL != true && $SHELL_INSTALL_OPTIONAL == true ]] && source "$SHELL_CONFIGS_DIR/install-optional.zsh"
-        tracing "plugin 2"
-        [[ $SHELL_SKIP_INSTALL != true ]] && s-run linker dotfiles
-        tracing "plugin 3"
-        [[ $SHELL_SKIP_INSTALL != true ]] && s-run linker bin
-        tracing "plugin 4"
-        [[ $SHELL_SKIP_INSTALL != true ]] && s-run linker configs
-        tracing "plugin 5"
-        [[ $SHELL_SKIP_INSTALL != true ]] && s-run runtime-apply-tweaks
+        s-run linker all
+        s-run runtime-apply-tweaks
         tracing "installing done"
     else
-        tracing "plugins init"
         s-run plugin-init
-        tracing "plugins init done"
     fi
     tracing "install done"
 
@@ -39,39 +25,25 @@ shell-runtime() {
     s-run runtime-zap-plugins
     s-run runtime-fzf-configure
 
-    tracing "plugins done"
-
     #? completions
     s-run runtime-completions
 
-    tracing "completions done"
-
     #? prompt
-    s-run runtime-prompt-plugin
+    local p10k_dir="$(brew --prefix)/share/powerlevel10k"
+    [[ -d $p10k_dir ]] && source "$p10k_dir/powerlevel10k.zsh-theme"
     s-run runtime-prompt-configure
 
     tracing "prompts done"
-
-    #? kali configure
+    s-run runtime-options
     s-run runtime-kali
-
-    tracing "kali done"
-
-    #? keybindings
     s-run runtime-keybindings
-
-    tracing "keybinds done"
-
     #? on-shell-runtime event
     if [ -n "$(declare -f on-shell-runtime)" ]; then
         on-shell-runtime
     fi
     tracing "on-shell-runtime done"
-
     s-not compiled && s-pather init
-
     tracing "paths done"
-
     #!compile
     if s-not compiled; then
         tracing "compiling..."
@@ -89,6 +61,7 @@ shell-runtime() {
     tracing "compile done"
     
     #!footer
+    zcompile ~/.zshrc
     tracing "runtime end"
     SHELL_IS_STARTED=true
     #!footer

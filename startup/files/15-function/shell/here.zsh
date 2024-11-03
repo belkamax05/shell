@@ -1,3 +1,3 @@
-shell-here() {
+s-here() {
     nav "$SHELL_DIR"
 }

@@ -1,4 +1,6 @@
 shell-runtime-kali() {
+    tracing "Load kali runtime"
+
     # ~/.zshrc file for zsh interactive shells.
     # see /usr/share/doc/zsh/examples/zshrc for examples
 

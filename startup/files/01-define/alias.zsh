@@ -11,7 +11,7 @@ alias me="s-run me"
 alias sc="s-run compile"
 
 #? shorthands
-
+alias shell="s-run"
 alias she="hard-exit"
 alias he="hard-exit"
 alias sse="soft-exit"
@@ -34,6 +34,7 @@ alias up="cd .."
 
 #? some more ls aliases
 
+# alias ll="ls -la"
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'

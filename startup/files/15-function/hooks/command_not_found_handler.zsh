@@ -8,3 +8,8 @@ function command_not_found_handler {
     echo-error "${COLOR_COMMAND}command_not_found_handler${STYLE_RESET}" "Not found '${COLOR_ARGUMENT}$command${STYLE_RESET}'"
     return $CODE_NOT_FOUND
 }
+
+# function command_not_found_handler {
+#     # echo "Not fund is under development"
+#     # return $CODE_NOT_FOUND
+# }
