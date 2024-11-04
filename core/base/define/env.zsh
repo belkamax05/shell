@@ -1,0 +1,1 @@
+SHELL_UNAME="$(uname -s)"

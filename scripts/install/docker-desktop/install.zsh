@@ -10,7 +10,7 @@
     mkdir -p ~/.oh-my-zsh/completions
     curl -L https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker > ~/.oh-my-zsh/completions/_docker
 
-    export PATH="$PATH:/usr/local/bin/docker"
+    # export PATH="$PATH:/usr/local/bin/docker"
 
     #? Manage Docker as a Non-Root User (Optional)
     sudo usermod -aG docker $USER

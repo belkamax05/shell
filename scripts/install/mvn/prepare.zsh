@@ -1,3 +1,3 @@
-if [ -d "$MVN_DIR" ]; then
-    s-install cancel
-fi
+# if [[ -d "$MVN_DIR" ]]; then
+#     s-install cancel
+# fi
