@@ -24,20 +24,20 @@ alias rs="restart"
 alias l="load"
 alias rl="reload"
 alias rr="restart"
+alias of="s-open-file"
 
 #? global aliases
 
 alias clr="clear"
 alias c="clear"
-alias dir='ls'
+alias dir="ls"
 alias up="cd .."
 
 #? some more ls aliases
 
-# alias ll="ls -la"
-alias ll='ls -l'
-alias la='ls -A'
-alias l='ls -CF'
+alias ll="ls -l"
+alias la="ls -A"
+alias l="ls -CF"
 
 alias fd="fdfind"
-alias pip=pip3
+alias pip="pip3"

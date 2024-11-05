@@ -2,7 +2,8 @@ s-run() {
     local command=$1
     local allArgs=$@
     if [ -z "$command" ]; then
-        echo-error "shell: command is required. See 'shell help'."
+        # echo-error "shell: command is required. See 'shell help'."
+        s-default-command
         return $CODE_ERROR
     fi
 
