@@ -1,7 +1,8 @@
 s-git-me() {
     #? display info about git user
     echo-info "Directory: ${COLOR_ARGUMENT}$(pwd)${STYLE_RESET}"
-    echo-info "Current user: ${COLOR_ARGUMENT}$(s-git current-user)${STYLE_RESET}"
+    echo-info "Repo user: ${COLOR_ARGUMENT}$(s-git current-user)${STYLE_RESET}"
+    echo-info "Global user: ${COLOR_ARGUMENT}$(s-git current-user --global)${STYLE_RESET}"
     echo-info "Current branch: ${COLOR_ARGUMENT}$(s-git current-branch)${STYLE_RESET}"
     echo-info "Current commit: ${COLOR_ARGUMENT}$(s-git current-commit)${STYLE_RESET}"
     echo-info "Staged files: ${COLOR_ARGUMENT}$(s-git staged-files-count)${STYLE_RESET}. (${COLOR_ARGUMENT}git staged-files${STYLE_RESET} for details)"

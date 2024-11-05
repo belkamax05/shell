@@ -43,8 +43,7 @@ swc = switch -c
 ; qpsn = "!f() { git stage-modified; git quick-push \"$1\"; }; f"
 
 #! commands
-z = "!zsh -c 'source ~/.zshrc && s-run git $0 $@'" #source ~/.zshrc s  $0 $@
-# hi1 = "!zsh -c 'source ~/.zshrc && hi1'"
+z = "!zsh -c 's-run git $0 $@'"
 #! commands
 merge-squash-reset = "!git z merge-squash-reset"
 fast-commit = "!git z fast-commit"
@@ -69,6 +68,7 @@ repo-root = "!git z repo-root"
 me = "!git z me"
 sync = "!git z sync"
 fast-submit = "!git z fast-submit"
+current-user = "!git z current-user"
 #! aliases to commands
 msr= "!git merge-squash-reset"
 pull-branch= "!git merge-squash-reset"
