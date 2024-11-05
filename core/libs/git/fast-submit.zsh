@@ -1,4 +1,4 @@
 s-git-fast-submit() {
-    git fast-commit $@
-    git fast-push
+    s-git-fast-commit $@
+    s-git-fast-push
 }
