@@ -20,7 +20,5 @@ SHELL_DIR="$HOME/shell"
 if [ ! -d "$SHELL_DIR" ]; then
     git clone git@github.com:belkamax05/shell.git "$SHELL_DIR"
 fi
-source "$SHELL_DIR/core/base.zsh"
-s-timer start zshenv
 s-timer start tracing
-source "$SHELL_DIR/core/startup.zsh"
+source "$SHELL_DIR/startup.zsh"

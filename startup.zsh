@@ -1,0 +1,1 @@
+s-source-dir-compiled "$SHELL_DIR/startup" "$SHELL_DIST/startup.zsh"

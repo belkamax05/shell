@@ -68,6 +68,7 @@ github-open = "!git z github-open"
 repo-root = "!git z repo-root"
 me = "!git z me"
 sync = "!git z sync"
+fast-submit = "!git z fast-submit"
 #! aliases to commands
 msr= "!git merge-squash-reset"
 pull-branch= "!git merge-squash-reset"
