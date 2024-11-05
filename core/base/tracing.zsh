@@ -14,6 +14,3 @@ s-tracing() {
     local diffTime=$(s-timer diff tracing)
     echo "${COLOR_WHITE}$diffTime ${STYLE_RESET} $@"
 }
-tracing() {
-    s-tracing $@
-}

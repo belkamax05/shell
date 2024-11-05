@@ -1,0 +1,1 @@
+source "$SHELL_DIR/core.zsh"

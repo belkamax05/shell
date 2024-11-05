@@ -4,3 +4,4 @@ if [[ $PRINT_TIME_NEXT_RUN == true ]]; then
     s-timer stop zshenv "Zshenv runtime: " " seconds"
     s-timer stop startup "Startup runtime: " " seconds"
 fi
+tracing "Startup completed"

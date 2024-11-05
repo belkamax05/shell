@@ -9,14 +9,14 @@ s-clear-dist() {
 s-clear() {
     case $1 in
         cache)
-            s-run clear-cache
+            s-clear-cache
             ;;
         dist)
-            s-run clear-dist
+            s-clear-dist
             ;;
         *)
-            s-run clear-cache
-            s-run clear-dist
+            s-clear-cache
+            s-clear-dist
             ;;
     esac
 }

@@ -1,4 +1,4 @@
-shell-linker() {
+s-linker() {
     _linkerDotfiles() {
         echo-info "Creating dotfiles linking..."
         ln -sf "$SHELL_DOTFILES_DIR/.zshrc" "$HOME/.zshrc"

@@ -1,4 +1,4 @@
-s-lazy-nvm() {
+nvm() {
     s-lazy-nvm-unset
     nvm $@
 }

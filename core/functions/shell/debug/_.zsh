@@ -1,8 +1,4 @@
 s-debug() {
-    _debuggerSet() {
-        s-user set SHELL_IS_DEBUG $1
-        SHELL_IS_DEBUG=$1
-    }
     _debuggerEnv() {
         s-not compiled && debug info "Shell compiling..."
         s-is compiled && debug success "Shell compiled!"
@@ -15,10 +11,10 @@ s-debug() {
             _debuggerEnv
             ;;
         enable)
-            _debuggerSet true
+            s-user set SHELL_IS_DEBUG  true
             ;;
         disable)
-            _debuggerSet false
+            s-user set SHELL_IS_DEBUG  false
             ;;
         *)
             echo-error "!!! Unknown debugger command: $1"
