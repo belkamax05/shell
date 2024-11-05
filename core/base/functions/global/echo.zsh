@@ -38,12 +38,6 @@ debug() {
 
 tracing() {
     s-not tracing && return $CODE_OK
-
-    s-is linux && TRACE_END_TIME=$(date +%s.%N)
-    s-is darwin && TRACE_END_TIME=$(date +%s)
-
-    TRACE_DIFF=$((TRACE_END_TIME - STARTUP_START_TIME))
-    TRACE_DIFF_ROUNDED="$(echo $TRACE_DIFF | cut -c1-5)"
-
-    echo "${COLOR_WHITE}$TRACE_DIFF_ROUNDED ${STYLE_RESET} $@"
+    local diffTime=$(s-timer diff tracing)
+    echo "${COLOR_WHITE}$diffTime ${STYLE_RESET} $@"
 }

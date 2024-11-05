@@ -1,0 +1,1 @@
+zcompile ~/.zshrc

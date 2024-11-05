@@ -1,1 +1,0 @@
-source-built-dir "$SHELL_DIR/core/exports" "$SHELL_DIST/core/exports.zsh"

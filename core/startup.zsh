@@ -1,1 +1,1 @@
-source-built-dir "$SHELL_DIR/core/startup" "$SHELL_DIST/core/startup.zsh"
+source-built-dir "$SHELL_DIR/core/startup" "$SHELL_DIST/core-startup.zsh"

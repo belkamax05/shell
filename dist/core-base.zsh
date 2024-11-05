@@ -1,3 +1,193 @@
+#? shell alias
+alias hard-exit="s-run hard-exit"
+alias soft-exit="s-run soft-exit"
+alias nav="s-run nav"
+alias clear-cache="s-run clear-cache"
+alias restart="s-run restart"
+alias load="s-run load"
+alias reload="s-run reload"
+alias here="s-run here"
+alias me="s-run me"
+alias sc="s-run compile"
+
+#? shorthands
+alias shell="s-run"
+alias she="hard-exit"
+alias he="hard-exit"
+alias sse="soft-exit"
+alias ssr="soft-exit & restart"
+alias s="s-run"
+alias se="soft-exit"
+alias scc="clear-cache"
+alias scs="clear-startup"
+alias rs="restart"
+alias l="load"
+alias rl="reload"
+alias rr="restart"
+
+#? global aliases
+
+alias clr="clear"
+alias c="clear"
+alias dir='ls'
+alias up="cd .."
+
+#? some more ls aliases
+
+# alias ll="ls -la"
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
+
+alias fd="fdfind"
+alias pip=pip3
+
+CODE_OK=0
+CODE_ERROR=1
+CODE_WARNING=2
+CODE_INFO=3
+CODE_DEBUG=4
+CODE_VERBOSE=5
+CODE_TRACE=6
+CODE_SILENT=7
+CODE_NOT_FOUND=127
+
+#? base colors
+COLOR_CYAN="\033[38;5;51m"             #00FFFF
+COLOR_DARK_RED="\033[38;5;196m"        #FF3131
+COLOR_YELLOW="\033[38;5;226m"          #FFFF00
+COLOR_HOTPINK="\033[38;5;199m"         #FF00AF
+COLOR_GREEN="\033[38;5;46m"            #00FF00
+COLOR_MAGENTA="\033[38;2;201;101;201m" #C965C9
+COLOR_WHITE="\033[38;5;231m"           #FFFFFF
+COLOR_DARK_BLUE="\033[38;5;21m"        #0000FF
+COLOR_DARK_GREEN="\033[38;5;22m"       #00FF00
+COLOR_DARK_YELLOW="\033[38;5;58m"      #FFFF00
+COLOR_DARK_CYAN="\033[38;5;37m"        #00FFFF
+COLOR_DARK_MAGENTA="\033[38;5;90m"     #FF00FF
+COLOR_DARK_WHITE="\033[38;5;255m"      #FFFFFF
+COLOR_DARK_GRAY="\033[38;5;240m"       #808080
+COLOR_DARK_ORANGE="\033[38;5;208m"     #FFA500
+COLOR_DARK_PINK="\033[38;5;198m"       #FF69B4
+COLOR_DARK_PURPLE="\033[38;5;57m"      #800080
+COLOR_DARK_TURQUOISE="\033[38;5;44m"   #40E0D0
+
+#? semantic colors
+COLOR_COMMAND="$COLOR_CYAN"
+COLOR_INFO="$COLOR_CYAN"
+COLOR_ARGUMENT="$COLOR_YELLOW"
+COLOR_PARAMS="$COLOR_DARK_PINK"
+COLOR_SUCCESS="$COLOR_GREEN"
+COLOR_ERROR="$COLOR_DARK_RED"
+COLOR_DEBUG="$COLOR_MAGENTA"
+COLOR_WARNING="$COLOR_DARK_ORANGE"
+
+#? styles
+STYLE_RESET="\033[0m"
+STYLE_BOLD="\033[1m"
+
+SHELL_UNAME="$(uname -s)"
+
+SHELL_DIST="$SHELL_DIR/dist"
+
+SHELL_CONFIGS_DIR="$SHELL_DIR/configs"
+SHELL_DOTFILES_DIR="$SHELL_CONFIGS_DIR/dotfiles"
+
+SHARED_DIR="$HOME/.local/share"
+SHELL_SHARED_DIR="$SHARED_DIR/shell"
+SHELL_DOWNLOADS_DIR="$SHELL_SHARED_DIR/downloads"
+
+SHELL_CACHE_DIR="$SHELL_SHARED_DIR/cache"
+
+SHELL_PLUGINS_DIR="$SHELL_SHARED_DIR/plugins"
+
+SHELL_STARTUP_DIR="$SHELL_DIR/startup"
+
+SHELL_EVENTS_DIR="$SHELL_DIR/events"
+
+SHELL_SCRIPTS_DIR="$SHELL_DIR/scripts"
+SHELL_INSTALL_DIR="$SHELL_SCRIPTS_DIR/install"
+
+SHELL_TWEAKS_DIR="$SHELL_SCRIPTS_DIR/tweaks"
+
+SHELL_LINKS_DIR="$SHELL_DIR/links"
+
+SHELL_LIBS_SRC_DIR="$SHELL_DIR/libs"
+SHELL_LIBS_DIST_DIR="$SHELL_CACHE_DIR/libs"
+
+
+#? nvm
+# export NVM_DIR="$HOME/.nvm"
+
+#? zap
+ZAP_DIR="$SHARED_DIR/zap"
+XDG_DATA_HOME="$SHARED_DIR"
+
+#? mvn
+MVN_DIR="$SHELL_PLUGINS_DIR/apache-maven-3.9.7"
+
+CURRENT_FILE_PATH="${(%):-%x}"
+
+# export PATH="$PATH:/usr/local/bin/docker"
+
+# PATH="XX/bin:$PATH"
+# Warning: /opt/homebrew/bin is not in your PATH.
+
+SHELL_PREFFIX="shell "
+SHELL_PREFFIX_ECHO="${COLOR_CYAN}$SHELL_PREFFIX${STYLE_RESET} 💬"
+SHELL_PREFFIX_ERROR="${COLOR_ERROR}$SHELL_PREFFIX${STYLE_RESET} ❌"
+SHELL_PREFFIX_SUCCESS="${COLOR_SUCCESS}$SHELL_PREFFIX${STYLE_RESET} ✅"
+SHELL_PREFFIX_INFO="${COLOR_CYAN}$SHELL_PREFFIX${STYLE_RESET} ℹ️ "
+SHELL_PREFFIX_DEBUG="${COLOR_DEBUG}$SHELL_PREFFIX${STYLE_RESET} 🚧"
+SHELL_PREFFIX_WARNING="${COLOR_WARNING}$SHELL_PREFFIX${STYLE_RESET} ⚠️"
+
+echo-fn() {
+    local preffix="$SHELL_PREFFIX"
+    local command=$1
+    local args=(${@:2})
+    if [[ $command == "error" ]]; then
+        preffix="$SHELL_PREFFIX_ERROR"
+    elif [[ $command == "success" ]]; then
+        preffix="$SHELL_PREFFIX_SUCCESS"
+    elif [[ $command == "info" ]]; then
+        preffix="$SHELL_PREFFIX_INFO"
+    elif [[ $command == "warning" ]]; then
+        preffix="$SHELL_PREFFIX_WARNING"
+    else
+        args=($@)
+    fi
+    echo "$preffix ${args[@]}"
+}
+echo-error() {
+    echo-fn error "$@"
+}
+echo-success() {
+    echo-fn success "$@"
+}
+echo-info() {
+    echo-fn info "$@"
+}
+echo-warning() {
+    echo-fn warning "$@"
+}
+
+export SHELL=$(which zsh)
+
+path-prepend() {
+    local value="$1"
+    if [[ -d "$value" && ":$PATH:" != *":$value:"* ]]; then
+        export PATH="$PATH:$value"
+    fi
+}
+
+path-prepend "$MVN_DIR/bin"
+path-prepend "/home/.linuxbrew/bin"
+path-prepend "$HOME/bin"
+path-prepend "/opt/homebrew/bin"
+path-prepend "$SHELL_CONFIGS_DIR/bin"
+path-prepend "$NVM_DIR/bin"
+path-prepend "/usr/local/bin/docker"
+
 shell-ghub-gui() {
     sudo $SHELL_PLUGINS_DIR/ghub-gui/ghub-gui
 }
@@ -42,14 +232,8 @@ debug() {
 
 tracing() {
     s-not tracing && return $CODE_OK
-
-    s-is linux && TRACE_END_TIME=$(date +%s.%N)
-    s-is darwin && TRACE_END_TIME=$(date +%s)
-
-    TRACE_DIFF=$((TRACE_END_TIME - STARTUP_START_TIME))
-    TRACE_DIFF_ROUNDED="$(echo $TRACE_DIFF | cut -c1-5)"
-
-    echo "${COLOR_WHITE}$TRACE_DIFF_ROUNDED ${STYLE_RESET} $@"
+    local diffTime=$(s-timer diff tracing)
+    echo "${COLOR_WHITE}$diffTime ${STYLE_RESET} $@"
 }
 
 function chpwd() {
@@ -2363,25 +2547,6 @@ shell-runtime-prompt-configure() {
 
 }
 
-shell-runtime-timer-start() {
-    # s-is linux && STARTUP_START_TIME=$(date +%s.%N)
-    # s-is darwin && STARTUP_START_TIME=$(date +%s)
-}
-
-shell-runtime-timer-stop() {
-    s-is linux && STARTUP_END_TIME=$(date +%s.%N)
-    s-is darwin && STARTUP_END_TIME=$(date +%s)
-    STARTUP_DIFF_TIME=$((STARTUP_END_TIME - STARTUP_START_TIME))
-    STARTUP_DIFF_TIME_ROUNDED="$(echo $STARTUP_DIFF_TIME | cut -c1-5)"
-    local modeText=""
-    if s-is compiled; then
-        modeText="compiled"
-    else
-        modeText="sourced"
-    fi
-    debug success "Shell ${COLOR_CYAN}$modeText${STYLE_RESET} time is ${COLOR_ARGUMENT}$STARTUP_DIFF_TIME_ROUNDED${STYLE_RESET} seconds"
-}
-
 shell-runtime-zap-plugins() {
     # for plugin in fzf fzf-tab mvn; do
     #     azSourceSystemPlugin "$plugin/include.zsh"
@@ -2433,11 +2598,11 @@ s-build() {
 }
 
 s-clear-cache() {
-    debug info "Clear cache at ${COLOR_ARGUMENT}$SHELL_CACHE_DIR${STYLE_RESET}"
+    echo-info "Clear cache at ${COLOR_ARGUMENT}$SHELL_CACHE_DIR${STYLE_RESET}"
     rm -rf "$SHELL_CACHE_DIR"
 }
 s-clear-dist() {
-    debug info "Clear dist at ${COLOR_ARGUMENT}$SHELL_DIST${STYLE_RESET}"
+    echo-info "Clear dist at ${COLOR_ARGUMENT}$SHELL_DIST${STYLE_RESET}"
     rm -rf "$SHELL_DIST"
 }
 s-clear() {
@@ -2457,6 +2622,7 @@ s-clear() {
 
 shell-compile() {
     s-run clear dist
+    s-run user set PRINT_TIME_NEXT_RUN true
     # s-run build
     s-run reload
 }
@@ -2505,10 +2671,10 @@ shell-config-file() {
     esac
 }
 
-s-debugger() {
+s-debug() {
     _debuggerSet() {
-        s-user set SHELL_DEBUGGER $1
-        SHELL_DEBUGGER=$1
+        s-user set SHELL_IS_DEBUG $1
+        SHELL_IS_DEBUG=$1
     }
     _debuggerEnv() {
         s-not compiled && debug info "Shell compiling..."
@@ -2563,7 +2729,7 @@ shell-download() {
 }
 
 shell-env-load() {
-    local runtimeConfigsFile="$SHELL_CONFIGS_DIR/config-overrides.zsh"
+    local runtimeConfigsFile="$SHELL_CONFIGS_DIR/overrides.zsh"
     if [[ -f $runtimeConfigsFile ]]; then
         source $runtimeConfigsFile
     else
@@ -3762,4 +3928,364 @@ s-user() {
             echo "Invalid '${COLOR_YELLOW}s-user${STYLE_RESET}' command '${COLOR_YELLOW}$1${STYLE_RESET}'."
             ;;
     esac
+}
+
+s-git-current-branch() {
+    git branch --show-current
+    # git rev-parse --abbrev-ref HEAD
+}
+
+s-git-current-commit() {
+    git log -1 --pretty=format:"%h %s"
+}
+
+s-git-current-user-name() {
+    git config --global user.name
+}
+s-git-current-user-email() {
+    git config --global user.email
+}
+s-git-current-user() {
+    echo "$(s-git current-user-name) <$(s-git current-user-email)>"
+}
+
+s-git-dialog-commit() {
+    _commitMessage="$1"
+    if [[ $_commitMessage == "" ]]; then
+        _commitMessage=$(gum input --header "Commit message")
+    fi
+    if [[ "$@" == *"--flow"* ]]; then
+        _commitFlowMode=$(gum choose "feat" "fix" "hotfix" --header "GitFlow Commit mode")
+        _commitMessage=$(gum input --header "Commit message" --value="DFS2-00000: $_commitFlowMode: $_commitMessage")
+    fi
+    _stagedCount=$(s-git staged-files-count)
+    s-git me
+    echo-warning "Commit ${COLOR_ARGUMENT}$_stagedCount${STYLE_RESET} files with message ${COLOR_ARGUMENT}$_commitMessage${STYLE_RESET}"
+    if gum confirm "Do you want to commit?"; then
+        s-git fast-commit $@
+        s-git me
+    fi
+    return $CODE_OK
+}
+
+s-git-fast-commit() {
+    git commit --no-verify -m "$1" ${@:2}
+    if [[ "$@" == *"--sync"* ]]; then
+        git sync
+    fi
+}
+
+s-git-fast-push() {
+    git push --no-verify -u origin
+}
+
+s-git-github-open() {
+    local file=$1
+    local remote=${2:-origin}
+    local repoRoot=$(s-git repo-root)
+    local branch=$(s-git current-branch)
+
+    echo "file: $file"
+    echo "remote: $remote"
+    echo "repoRoot: $repoRoot"
+    echo "branch: $branch"
+    local url=$(git config --get remote.$remote.url)
+    echo "url: $url"
+
+    [[ -n $repoRoot && -n $branch && -n $remote ]] || return 1
+
+    # local path=${PWD/#$repoRoot/}
+    local pwd2=$(pwd)
+    echo "pwd2: $pwd2"
+    local path="${PWD#$repoRoot}"
+    echo "localPpathath: $path"
+    echo "PWD: $PWD"
+    echo "repoRoot: $repoRoot"
+    [[ -n $file ]] && localPath+=/$file
+    echo "path: $path"
+
+    local a
+    IFS=:/ read -A a <<< "$url"
+    local len=${#a[@]}
+    local user=${a[$len-1]%.git}
+    local repo=${a[$len-0]%.git}
+
+    local viewMode="tree"
+    if [[ -n $file ]]; then
+        viewMode="blob"
+    fi
+    local url="https://github.com/$user/$repo/$viewMode/$branch$path"
+    echo $url
+}
+
+s-git-gho() {
+    s-git-github-open $@
+}
+
+s-git-hard-reset() {
+    echo "Hard reset is not recommended. Use with caution. (TODO: Add confirmation)"
+    # git reset --hard HEAD
+    # git clean -df
+}
+
+s-git-merge-squash-reset() {
+    git merge --no-commit --squash $1
+    git reset HEAD
+    return $CODE_OK
+}
+
+s-git-me() {
+    #? display info about git user
+    echo-info "Directory: ${COLOR_ARGUMENT}$(pwd)${STYLE_RESET}"
+    echo-info "Current user: ${COLOR_ARGUMENT}$(s-git current-user)${STYLE_RESET}"
+    echo-info "Current branch: ${COLOR_ARGUMENT}$(s-git current-branch)${STYLE_RESET}"
+    echo-info "Current commit: ${COLOR_ARGUMENT}$(s-git current-commit)${STYLE_RESET}"
+    echo-info "Staged files: ${COLOR_ARGUMENT}$(s-git staged-files-count)${STYLE_RESET}. (${COLOR_ARGUMENT}git staged-files${STYLE_RESET} for details)"
+    echo-info "Unstaged files: ${COLOR_ARGUMENT}$(s-git unstaged-files-count)${STYLE_RESET}. (${COLOR_ARGUMENT}git unstaged-files${STYLE_RESET} for details)"
+    echo-info "Modified files: ${COLOR_ARGUMENT}$(s-git modified-files-count)${STYLE_RESET}. (${COLOR_ARGUMENT}git modified-files${STYLE_RESET} for details)"
+    echo-info "Created files: ${COLOR_ARGUMENT}$(s-git created-files-count)${STYLE_RESET}. (${COLOR_ARGUMENT}git created-files${STYLE_RESET} for details)"
+    echo-info "Deleted files: ${COLOR_ARGUMENT}$(s-git deleted-files-count)${STYLE_RESET}. (${COLOR_ARGUMENT}git deleted-files${STYLE_RESET} for details)"
+
+    return $CODE_OK
+}
+
+s-git-repo-root() {
+    git rev-parse --show-toplevel
+}
+
+s-git-set-email() {
+    git config --global user.email "$1"
+    s-git current-user
+    return $CODE_OK
+}
+
+s-git-soft-reset() {
+    echo-warning "Soft reset is not recommended. Use with caution. (TODO: Add confirmation)"
+    # git reset --soft HEAD~1;
+}
+
+s-git-stage-all() {
+    git add -A
+}
+
+s-git-stage-modified() {
+    git add -u
+}
+
+s-git-created-files() {
+    git ls-files --others --exclude-standard
+}
+
+s-git-created-files-count() {
+    s-git created-files | wc -l
+    return $CODE_OK
+}
+
+s-git-deleted-files() {
+    git diff --diff-filter=D --name-only
+}
+
+s-git-deleted-files-count() {
+    s-git deleted-files | wc -l
+    return $CODE_OK
+}
+
+s-git-modified-files() {
+    git diff --name-only
+    return $CODE_OK
+}
+
+s-git-modified-files-count() {
+    s-git modified-files | wc -l
+    return $CODE_OK
+}
+
+s-git-staged-files() {
+    git diff --name-only --cached
+    return $CODE_OK
+}
+
+s-git-staged-files-count() {
+    s-git staged-files | wc -l
+    return $CODE_OK
+}
+
+s-git-unstaged-files() {
+    _unstagedFiles=$(git modified-files)
+    _newFiles=$(git created-files)
+    _allFiles="$_unstagedFiles"$'\n'"$_newFiles"
+    #? Remove any empty lines
+    _allFiles=$(echo "$_allFiles" | sed '/^$/d')
+    echo "$_allFiles"
+    return $CODE_OK
+}
+
+s-git-unstaged-files-count() {
+    s-git unstaged-files | wc -l
+    return $CODE_OK
+}
+
+s-git-sync() {
+    git fetch --all
+    git pull
+    if [[ "$@" == *"--push"* ]]; then
+        s-git fast-push
+    fi
+    return $CODE_OK
+}
+
+s-git() {
+    if [[ -z $1 ]]; then
+        echo-error "Empty command for s-git"
+        return $CODE_ERROR
+    fi
+    s-git-$1 ${@:2}
+}
+
+s-posture-check() {
+  # Check if UFW is active
+  ufw_status=$(sudo ufw status | grep "Status: active")
+  if [ -n "$ufw_status" ]; then
+    echo "UFW Firewall: Active"
+  else
+    echo "UFW Firewall: Inactive"
+  fi
+
+  # Check if firewalld is active
+  firewalld_status=$(sudo systemctl is-active firewalld)
+  if [ "$firewalld_status" = "active" ]; then
+    echo "firewalld: Active"
+  else
+    echo "firewalld: Inactive"
+  fi
+
+  # Check for LUKS encryption on partitions
+  encrypted_partitions=$(lsblk -o NAME,FSTYPE | grep crypt)
+  if [ -n "$encrypted_partitions" ]; then
+    echo "LUKS Encryption: Active"
+  else
+    echo "LUKS Encryption: Not found"
+  fi
+}
+
+s-posture-disable-ufw() {
+    sudo ufw disable
+}
+
+s-posture-install-firewalld() {
+    #? Installing and Using firewalld 
+    sudo apt install firewalld
+    sudo systemctl enable firewalld
+    sudo systemctl start firewalld
+}
+
+s-posture-install-luks() {
+    #? Configure Automatic Security Updates: Set up automatic updates for security patches:
+    sudo dpkg-reconfigure --priority=low unattended-upgrades
+
+    #? Enable Full-Disk Encryption on Additional Drives (If Needed): If you add new drives and want to encrypt them, you can use cryptsetup to encrypt the partitions:
+    # sudo cryptsetup luksFormat /dev/sdX
+    # sudo cryptsetup open /dev/sdX encrypted_partition
+
+    #? Enable UFW Logging: You can enable firewall logging for more visibility into what’s being blocked:
+    sudo ufw logging on
+
+}
+
+s-posture-install-ufw() {
+    #? Install UFW: During installation, make sure to install ufw. On most Ubuntu or Debian-based distributions, it's installed by default, but you can ensure it by running:
+    sudo apt install ufw
+
+    #? Enable UFW: After installation is complete and before configuring the system further, enable the firewall:
+    sudo ufw enable
+
+    #? Configure Firewall Rules: Depending on the services you're running (e.g., SSH, HTTP), configure the rules:
+    sudo ufw allow ssh
+    sudo ufw allow http
+    sudo ufw allow https
+
+    #? Ensure UFW Starts on Boot: UFW should automatically start on boot once enabled, but you can ensure this by running:
+    sudo systemctl enable ufw
+}
+
+s-posture() {
+    if [ $# -eq 0 ]; then
+        echo-error "s-posture: Missing argument"
+        return 1
+    fi
+    s-posture-$1 ${@:2}
+}
+
+typeset -gA shell_timer_list
+s-timer() {
+    _timerStart() {
+        local name="$1"
+        s-is linux && local startTime=$(date +%s.%N)
+        s-is darwin && local startTime=$(date +%s)
+        shell_timer_list[$name]=$startTime
+    }
+    _timerGetDiff() {
+        local name=$1
+        local startTime=${shell_timer_list[$name]}
+        s-is linux && local endTime=$(date +%s.%N)
+        s-is darwin && local endTime=$(date +%s)
+        local diffTime=$((endTime - startTime))
+        local diffRounded="$(echo $diffTime | cut -c1-5)"
+        echo $diffRounded
+    }
+    _timerStop() {
+        local name=$1
+        local preffix=$2
+        local suffix=$3
+        local startTime=${shell_timer_list[$name]}
+        local diffRounded="$(_timerGetDiff $name)"
+        echo-info "$preffix${COLOR_ARGUMENT}$diffRounded${STYLE_RESET}$suffix"
+    }
+    case $1 in
+        start)
+            _timerStart ${@:2}
+            ;;
+        stop)
+            _timerStop ${@:2}
+            ;;
+        diff)
+            _timerGetDiff ${@:2}
+            ;;
+        *)
+            echo "Usage: s-timer start|stop <name>"
+            ;;
+    esac
+}
+
+s-tm() {
+    #? kill all tmux sessions
+    # tmux kill-server
+}
+
+source-dir() {
+    local dir="$1"
+    for file in $(find "$dir" -type f | sort); do
+        source "$file"
+    done
+}
+build-dir() {
+    local dir="$1"
+    local output_file="$2"
+    local file_list=()
+    for file in $(find "$dir" -type f | sort); do
+        file_list+=("$file")
+    done
+    echo-info "Building directory ${COLOR_ARGUMENT}$dir${STYLE_RESET} into ${COLOR_ARGUMENT}$output_file${STYLE_RESET}"
+    mkdir -p "$(dirname "$output_file")"
+    awk 'FNR==1 && NR!=1 {print ""} {print}' "${file_list[@]}" > "$output_file"
+    
+}
+source-built-dir() {
+    local dir="$1"
+    local output_file="$2"
+    if [[ ! -f "$output_file" ]]; then
+        build-dir "$dir" "$output_file"
+    fi
+    source "$output_file"
+    return $CODE_OK
 }

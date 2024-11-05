@@ -1,3 +1,5 @@
+s-timer start startup
+
 #? associative array
 typeset -gA paths_alias_list
 typeset -gA projects_scripts_list
@@ -7,14 +9,9 @@ typeset -ga shell_navigation_list=(
     "$PWD"
 )
 
-#!header
-tracing "runtime start 1"
-s-run runtime-timer-start
-tracing "runtime start 2"
 s-run env init
-tracing "runtime start 3"
+tracing "runtime start"
 s-user load
-#!header
 
 s-run runtime-autoload
 
@@ -56,24 +53,11 @@ tracing "on-shell-runtime done"
 s-not compiled && s-pather init
 tracing "paths done"
 
-#!compile
-if s-not compiled; then
-    tracing "compiling..."
-    echo-info "Runtime finished"
-    s-run build
-    s-debugger env
-    s-run runtime-timer-stop
-    s-run reload
-else
-    tracing "skipping compilation..."
-    s-debugger env
-    s-run runtime-timer-stop
-fi
-tracing "compile done"
-#!compile
-
-#!footer
 zcompile ~/.zshrc
-tracing "runtime end"
+
 SHELL_IS_STARTED=true
-#!footer
+if [[ $PRINT_TIME_NEXT_RUN == true ]]; then
+    s-run user set PRINT_TIME_NEXT_RUN false
+    s-timer stop zshenv "Zshenv runtime: " " seconds"
+    s-timer stop startup "Startup runtime: " " seconds"
+fi

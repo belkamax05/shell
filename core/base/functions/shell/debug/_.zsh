@@ -1,7 +1,7 @@
-s-debugger() {
+s-debug() {
     _debuggerSet() {
-        s-user set SHELL_DEBUGGER $1
-        SHELL_DEBUGGER=$1
+        s-user set SHELL_IS_DEBUG $1
+        SHELL_IS_DEBUG=$1
     }
     _debuggerEnv() {
         s-not compiled && debug info "Shell compiling..."
