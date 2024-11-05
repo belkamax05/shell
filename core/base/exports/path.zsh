@@ -1,10 +1,15 @@
 path-prepend() {
     local value="$1"
-    if [[ -d "$value" && ":$PATH:" != *":$value:"* ]]; then
-        export PATH="$PATH:$value"
+    local alreadyExists=false
+    if [[ ":$PATH:" == *":$value:"* ]]; then
+        local alreadyExists=true
+    fi
+    if [[ $alreadyExists == false ]]; then
+        export PATH="$value:$PATH"
     fi
 }
 
+PATH=":$PATH:"
 path-prepend "$MVN_DIR/bin"
 path-prepend "/home/.linuxbrew/bin"
 path-prepend "$HOME/bin"

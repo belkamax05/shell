@@ -9,6 +9,16 @@ typeset -ga shell_navigation_list=(
     "$PWD"
 )
 
+if [[ $SHELL_UNAME == "Linux" ]]; then
+    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
+
+if [[ $(command -v nvm) != "nvm" ]]; then
+    debug info "Loading ${COLOR_SUCCESS}nvm${STYLE_RESET}"
+    export NVM_AUTO_USE=true
+    source $(brew --prefix nvm)/nvm.sh
+fi
+
 s-run env init
 tracing "runtime start"
 s-user load
@@ -34,7 +44,6 @@ s-run runtime-fzf-configure
 #? completions
 s-run runtime-completions
 
-#? prompt
 local p10k_dir="$(brew --prefix)/share/powerlevel10k"
 [[ -d $p10k_dir ]] && source "$p10k_dir/powerlevel10k.zsh-theme"
 s-run runtime-prompt-configure
