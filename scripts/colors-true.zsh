@@ -19,3 +19,4 @@ for r in {0..255..51}; do
         echo -e "\e[0m"
     done
 done
+

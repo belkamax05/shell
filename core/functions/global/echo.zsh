@@ -26,7 +26,7 @@ compiling() {
     fi
 }
 
-debug() {
+s-debug-message() {
     s-not debug && return $CODE_OK
     local command=$1
     if is-echo-command $command; then

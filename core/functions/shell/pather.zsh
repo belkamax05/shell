@@ -1,8 +1,8 @@
 s-pather() {
-    _add-alias() { #? adds new alias of path
+    s-pather-add-alias() { #? adds new alias of path
         paths_alias_list[$1]="$2"
     }
-    _get() { #? returns alias or path, based on alias name
+    s-pather-get() { #? returns alias or path, based on alias name
         local path=$1
         local pathAlias=$paths_alias_list[$path]
         if [ -z "$pathAlias" ]; then
@@ -11,38 +11,34 @@ s-pather() {
             echo $pathAlias
         fi
     }
-    _dir_change() {
-        s-run project pwd-check
+    s-pather-dir-change() {
+        s-project pwd-check
         s-on-pwd-change
-        # s-load-nvmrc
     }
-    _init() { #? every time shell is preparing to run at folder
-        compiling info "You are currently at $(pwd)"
-        _dir_change
-        # # load-nvmrc
-        
+    s-pather-init() { #? every time shell is preparing to run at folder
+        s-debug info "You are currently at $(pwd)"
+        s-pather-dir-change
     }
-    _update() { #? shell foldder changes
+    s-pather-update() { #? shell foldder changes
         verbose info "You switched to $(pwd)"
-        _dir_change
+        s-pather-dir-change
         if [ $SHELL_IS_BACK_PROCESSING -eq 0 ]; then
             shell_navigation_list[$#shell_navigation_list+1]=$PWD
             return
         fi
-        
     }
     case $1 in
         add-alias)
-            _add-alias ${@:2}
+            s-pather-add-alias ${@:2}
             ;;
         init) 
-            _init ${@:2}
+            s-pather-init ${@:2}
             ;;
         get) 
-            _get ${@:2}
+            s-pather-get ${@:2}
             ;;
         update)
-            _update ${@:2}
+            s-pather-update ${@:2}
             ;;
         *)
             echo-error "TODO shell-on-path-change"

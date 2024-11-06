@@ -1,5 +1,7 @@
+typeset -gA projects_scripts_list
+
 s-project() {
-    _list() {
+    s-project-list() {
         if [ ${#projects_scripts_list[@]} -eq 0 ]; then
             echo-info "No projects scripts found"
             return $CODE_OK
@@ -8,23 +10,24 @@ s-project() {
             echo "$key: ${projects_scripts_list[$key]}"
         done
     }
-    _add() {
+    s-project-add() {
         local pathOrAlias=$1
         local pathResolved=$(s-pather get $pathOrAlias)
         local scriptName=$2
+        s-debug info "Adding project ${COLOR_ARGUMENT}$pathOrAlias${STYLE_RESET} with script ${COLOR_ARGUMENT}$scriptName${STYLE_RESET}"
         projects_scripts_list[$pathResolved]=$scriptName
     }
-    _pwd-check() {
-        SHELL_IS_PROJECT=0
+    s-project-pwd-check() {
+        SHELL_IS_PROJECT=false
         local scriptName=${projects_scripts_list[$PWD]}
         if [ -n "$scriptName" ]; then
-            # debug success "Script for project: $scriptName"
-            SHELL_IS_PROJECT=1
+            s-debug success "Script ${COLOR_ARGUMENT}$scriptName${STYLE_RESET} found for ${COLOR_ARGUMENT}$PWD${STYLE_RESET}"
+            SHELL_IS_PROJECT=true
             return $CODE_OK
         fi
-        # verbose-error "No script found for $scriptName at $PWD"
+        s-debug info "No script found for $PWD"
     }
-    _run() {
+    s-project-run() {
         local scriptName=${projects_scripts_list[$PWD]}
         if [ -z "$scriptName" ]; then
             echo-error "No script found for $PWD"
@@ -42,20 +45,20 @@ s-project() {
 
     case $1 in
         add)
-            _add ${@:2}
+            s-project-add ${@:2}
             ;;
         pwd-check)
-            _pwd-check ${@:2}
+            s-project-pwd-check ${@:2}
             ;;
         list)
-            _list ${@:2}
+            s-project-list ${@:2}
             ;;
         run)
-            _run ${@:2}
+            s-project-run ${@:2}
             return $?
             ;;
         *)
-            _run $@
+            s-project-run $@
             return $?
             ;;
     esac

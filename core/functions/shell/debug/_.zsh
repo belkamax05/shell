@@ -17,7 +17,7 @@ s-debug() {
             s-user set SHELL_IS_DEBUG  false
             ;;
         *)
-            echo-error "!!! Unknown debugger command: $1"
+            s-debug-message $@
             ;;
     esac
 }
