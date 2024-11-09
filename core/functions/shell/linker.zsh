@@ -8,7 +8,7 @@ s-linker() {
     }
 
     _linkerBin() {
-        debug warning "TODO remove linker bin"
+        s-debug warning "TODO remove linker bin"
         # echo-info "Creating bin linking..."
     }
 

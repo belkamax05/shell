@@ -1,13 +1,13 @@
 shell-guard() {
     set() {
         local name="$1"
-        debug info "Guard set '${COLOR_ARGUMENT}$name${STYLE_RESET}'"
+        s-debug info "Guard set '${COLOR_ARGUMENT}$name${STYLE_RESET}'"
         SHELL_GUARD="SHELL_GUARD_${name//-/_}_ZSH"
         eval "$SHELL_GUARD=1"
     }
     unset() {
         local name="$1"
-        debug info "Guard unset '${COLOR_ARGUMENT}$name${STYLE_RESET}'"
+        s-debug info "Guard unset '${COLOR_ARGUMENT}$name${STYLE_RESET}'"
         SHELL_GUARD="SHELL_GUARD_${name//-/_}_ZSH"
         eval "$SHELL_GUARD=0"
     }

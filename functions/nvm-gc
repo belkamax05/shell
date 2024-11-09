@@ -1,10 +1,10 @@
 if [[ $(command -v nvm) != "nvm" ]]; then
-    debug info "Loading ${COLOR_SUCCESS}nvm${STYLE_RESET}"
+    s-debug info "Loading ${COLOR_SUCCESS}nvm${STYLE_RESET}"
     export NVM_AUTO_USE=true
     source $(brew --prefix nvm)/nvm.sh
 fi
 nvm() {
-    debug info "Lazy loading ${COLOR_ARGUMENT}nvm${STYLE_RESET}"
+    s-debug info "Lazy loading ${COLOR_ARGUMENT}nvm${STYLE_RESET}"
     export NVM_AUTO_USE=true
     ZSH_NVM_DIR="$HOME/dev/.zsh-nvm"
     if [ ! -d "$ZSH_NVM_DIR" ]; then

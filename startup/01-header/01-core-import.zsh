@@ -1,1 +1,1 @@
-source "$SHELL_DIR/core.zsh"
+# source "$SHELL_DIR/core.zsh"

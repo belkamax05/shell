@@ -1,15 +1,20 @@
 s-tracing() {
     local command=$1
-    if [[ $command == "enable" ]]; then
+    case $command in
+    enable)
         s-user set SHELL_IS_TRACING true
         return $CODE_OK
-    elif [[ $command == "disable" ]]; then
+        ;;
+    disable)
         s-user set SHELL_IS_TRACING false
         return $CODE_OK
-    elif [[ $command == "status" ]]; then
+        ;;
+    status)
         s-user get SHELL_IS_TRACING
         return $CODE_OK
-    fi
+        ;;
+    esac
+    s-is started && return $CODE_OK
     s-not tracing && return $CODE_OK
     local diffTime=$(s-timer diff tracing)
     echo "${COLOR_WHITE}$diffTime ${STYLE_RESET} $@"
