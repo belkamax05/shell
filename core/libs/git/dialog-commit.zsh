@@ -10,7 +10,7 @@ s-git-dialog-commit() {
     _stagedCount=$(s-git staged-files-count)
     s-git me
     echo-warning "Commit ${COLOR_ARGUMENT}$_stagedCount${STYLE_RESET} files with message ${COLOR_ARGUMENT}$_commitMessage${STYLE_RESET}"
-    if gum confirm "Do you want to commit?"; then
+    if p-confirm "Do you want to commit?"; then
         s-git fast-commit $@
         s-git me
     fi

@@ -15,4 +15,5 @@ s-load-nvmrc() {
     elif [ "$node_version" != "$(nvm version default)" ]; then
         nvm use default
     fi
+    tracing "Load nvmrc done"
 }
