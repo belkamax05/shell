@@ -1,37 +1,40 @@
 typeset -gA shell_timer_list
+
+s-timer-get-time() {
+    s-is linux && date +%s.%N
+    s-is darwin && date +%s
+}
+s-timer-start() {
+    local name="$1"
+    shell_timer_list[$name]=$(s-timer-get-time)
+}
+s-timer-get-diff() {
+    local name=$1
+    local startTime=${shell_timer_list[$name]}
+    local endTime=$(s-timer-get-time)
+    local diffTime=$((endTime - startTime))
+    local diffRounded="$(echo $diffTime | cut -c1-5)"
+    echo $diffRounded
+}
+s-timer-stop() {
+    local name=$1
+    local preffix=$2
+    local suffix=$3
+    local startTime=${shell_timer_list[$name]}
+    local diffRounded="$(s-timer-get-diff $name)"
+    echo-info "$preffix${COLOR_ARGUMENT}$diffRounded${STYLE_RESET}$suffix"
+}
+
 s-timer() {
-    _timerStart() {
-        local name="$1"
-        s-is linux && local startTime=$(date +%s.%N)
-        s-is darwin && local startTime=$(date +%s)
-        shell_timer_list[$name]=$startTime
-    }
-    _timerGetDiff() {
-        local name=$1
-        local startTime=${shell_timer_list[$name]}
-        s-is linux && local endTime=$(date +%s.%N)
-        s-is darwin && local endTime=$(date +%s)
-        local diffTime=$((endTime - startTime))
-        local diffRounded="$(echo $diffTime | cut -c1-5)"
-        echo $diffRounded
-    }
-    _timerStop() {
-        local name=$1
-        local preffix=$2
-        local suffix=$3
-        local startTime=${shell_timer_list[$name]}
-        local diffRounded="$(_timerGetDiff $name)"
-        echo-info "$preffix${COLOR_ARGUMENT}$diffRounded${STYLE_RESET}$suffix"
-    }
     case $1 in
         start)
-            _timerStart ${@:2}
+            s-timer-start ${@:2}
             ;;
         stop)
-            _timerStop ${@:2}
+            s-timer-stop ${@:2}
             ;;
         diff)
-            _timerGetDiff ${@:2}
+            s-timer-get-diff ${@:2}
             ;;
         *)
             echo "Usage: s-timer start|stop <name>"
