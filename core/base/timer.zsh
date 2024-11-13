@@ -1,3 +1,4 @@
+#!/bin/zsh
 typeset -gA shell_timer_list
 
 s-timer-get-time() {
@@ -11,9 +12,20 @@ s-timer-start() {
 s-timer-get-diff() {
     local name=$1
     local startTime=${shell_timer_list[$name]}
+    if [[ -z $startTime ]]; then
+        echo-error "Timer $name not started"
+        return
+    fi
     local endTime=$(s-timer-get-time)
     local diffTime=$((endTime - startTime))
+    # echo "startTime: $startTime"
+    # echo "endTime: $endTime"
+    # echo "diffTime: $diffTime"
+    # local diffTime=$(( endTime - startTime ))
+    # echo "$diffTime" | awk '{printf "%.2f", $1}'
+    # local diffTime=$(echo "$endTime - $startTime" | bc)
     local diffRounded="$(echo $diffTime | cut -c1-5)"
+    # local diffRounded=$(printf "%.2f" $diffTime)
     echo $diffRounded
 }
 s-timer-stop() {
