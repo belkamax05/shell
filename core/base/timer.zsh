@@ -2,7 +2,7 @@ typeset -gA shell_timer_list
 
 s-timer-get-time() {
     s-is linux && date +%s.%N
-    s-is darwin && date +%s
+    s-is darwin && gdate +%s.%N
 }
 s-timer-start() {
     local name="$1"
