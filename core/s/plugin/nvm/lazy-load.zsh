@@ -1,7 +1,13 @@
-s-load-nvmrc() {
-    tracing "Load nvmrc"
-    if [ -n "$(declare -f s-lazy-nvm-unset)" ]; then
-        s-lazy-nvm-unset
+s-plugin-nvm-lazy-load() {
+    s-tracing "Load nvmrc"
+    if [[ ! -f "$PWD/.nvmrc" ]]; then
+        s-tracing "No .nvmrc file found"
+        return $CODE_OK
+    fi
+    if [[ $(command -v nvm) != "nvm" ]]; then
+        s-debug info "Lazy loading ${COLOR_SUCCESS}nvm${STYLE_RESET}"
+        export NVM_AUTO_USE=true
+        source $(brew --prefix nvm)/nvm.sh
     fi
     local node_version="$(nvm version)"
     local nvmrc_path="$(nvm_find_nvmrc)"
@@ -15,5 +21,5 @@ s-load-nvmrc() {
     elif [ "$node_version" != "$(nvm version default)" ]; then
         nvm use default
     fi
-    tracing "Load nvmrc done"
+    s-tracing "Load nvmrc done"
 }
