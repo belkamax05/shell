@@ -1,17 +1,8 @@
 s-linker() {
-    _linkerDotfiles() {
-        echo-info "Creating dotfiles linking..."
-        ln -sf "$SHELL_DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
-        ln -sf "$SHELL_DOTFILES_DIR/.zprofile" "$HOME/.zprofile"
-        ln -sf "$SHELL_DOTFILES_DIR/.zshenv" "$HOME/.zshenv"
-        ln -sf "$SHELL_DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
-    }
-
     _linkerBin() {
         s-debug warning "TODO remove linker bin"
         # echo-info "Creating bin linking..."
     }
-
     _linkerConfigs() {
         local target_link="$SHELL_CONFIGS_DIR/shell-config"
         if [ -L "$target_link" ] || [ -e "$target_link" ]; then
@@ -22,10 +13,9 @@ s-linker() {
         fi
         ln -s "$SHELL_SHARED_DIR" "$target_link"
     }
-
     case $1 in
         dotfiles)
-            _linkerDotfiles
+            s-linker-dotfiles
             ;;
         configs)
             _linkerConfigs
