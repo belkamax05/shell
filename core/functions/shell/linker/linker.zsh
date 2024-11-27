@@ -14,9 +14,6 @@ s-linker() {
         ln -s "$SHELL_SHARED_DIR" "$target_link"
     }
     case $1 in
-        dotfiles)
-            s-linker-dotfiles
-            ;;
         configs)
             _linkerConfigs
             ;;
